@@ -19,6 +19,9 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
         $animal1->setSex('male');
         $animal1->setIsSterilized(false);
         $animal1->setTypeId($this->getReference('Chien'));
+        $animal1->addVaccination($this->getReference('Rage'));
+        $animal1->addVaccination($this->getReference('Parvovirus'));
+        $animal1->addVaccination($this->getReference('Hépatite'));
         $manager->persist($animal1);
         
         $animal2 = new Animal();
@@ -28,6 +31,8 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
         $animal2->setIsSterilized(true);
         $animal2->setAllergy('Arachides');
         $animal2->setTypeId($this->getReference('Chat'));
+        $animal2->addVaccination($this->getReference('Rage'));
+        $animal2->addVaccination($this->getReference('Calicivirus'));
         $manager->persist($animal2);
         
         $manager->flush();
@@ -38,6 +43,7 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
         return [
             AnimalTypeFixtures::class,
             PetOwnerFixtures::class,
+            VaccinationFixtures::class,
         ];
     }
 }

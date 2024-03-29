@@ -97,7 +97,7 @@ class CityFixtures extends Fixture
         $manager->persist($city16);
 
         $city17 = new City();
-        $city17->setCityName("Roubaix"); // Seconde ville du département du Nord
+        $city17->setCityName("Roubaix");
         $city17->setPostcode("59100");
         $manager->persist($city17);
 
