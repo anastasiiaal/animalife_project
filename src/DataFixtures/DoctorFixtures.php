@@ -20,6 +20,13 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor1->setAddress('71 avenue des Alpes');
         $doctor1->setClinicName('Clinique des Alpes');
         $doctor1->setIsEmergency(true);
+        $doctor1->addAnimalType($this->getReference('Chat'));
+        $doctor1->addAnimalType($this->getReference('Chien'));
+        $doctor1->addAnimalType($this->getReference('Lapin'));
+        $doctor1->addService($this->getReference('service1'));
+        $doctor1->addService($this->getReference('service2'));
+        $doctor1->addService($this->getReference('service7'));
+        $doctor1->addService($this->getReference('service9'));
         $manager->persist($doctor1);
 
         $manager->flush();
@@ -32,6 +39,7 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         return [
             UserFixtures::class,
             CityFixtures::class,
+            AnimalTypeFixtures::class,
         ];
     }
 }
