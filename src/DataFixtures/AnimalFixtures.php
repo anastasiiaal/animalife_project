@@ -36,6 +36,8 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($animal2);
         
         $manager->flush();
+
+        $this->addReference('animal1', $animal1);
     }
 
     public function getDependencies()
