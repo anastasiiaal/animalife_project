@@ -8,11 +8,20 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class DoctorController extends AbstractController
 {
-    #[Route('/doctor', name: 'app_doctor')]
+    #[Route('/doctors', name: 'doctors', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('doctor/index.html.twig', [
             'controller_name' => 'DoctorController',
+        ]);
+    }
+
+    #[Route('/doctors/{id}', name: 'doctor', defaults: ['id' => null], methods: ['GET', 'HEAD'])]
+    public function doctor($id): Response
+    {
+        return $this->render('doctor/doctor.html.twig', [
+            'controller_name' => 'SingleDoctorController',
+            'id' => $id
         ]);
     }
 }
