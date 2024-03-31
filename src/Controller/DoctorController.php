@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Doctor;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,11 +11,20 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class DoctorController extends AbstractController
 {
-    #[Route('/doctors', name: 'doctors', methods: ['GET'])]
-    public function index(EntityManagerInterface $em): Response
+    private $em;
+    public function __construct(EntityManagerInterface $em)
     {
-        $repository = $em->getRepository(Doctor::class);
-        $doctors = $repository->findAll();
+        $this->em = $em;
+    }
+
+    #[Route('/doctors', name: 'doctors', methods: ['GET'])]
+    public function index(): Response
+    {
+        $repository = $this->em->getRepository(Doctor::class);
+        $doctors = $repository->find(4)->getUserId();
+        $userRepository = $this->em->getRepository(User::class);
+        $user = $userRepository->find($doctors);
+        dd($user->getFirstName());
         dd($doctors);
         return $this->render('doctor/index.html.twig', [
             'doctors' => $doctors,
