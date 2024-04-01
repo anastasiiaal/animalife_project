@@ -55,10 +55,36 @@ class UserFixtures extends Fixture
         $user3->setRoleId('2');
         $manager->persist($user3);
 
+        $user4 = new User();
+        $user4->setEmail('paul.veto@gmail.com');
+        $user4->setPassword($this->passwordHasher->hashPassword(
+            $user4,
+            'password123' // for test purposes ; will change later
+        ));
+        $user4->setFirstName('Paul');
+        $user4->setLastName('Hubert');
+        $user4->setPhone('0610883313');
+        $user4->setRoleId('2');
+        $manager->persist($user4);
+
+        $user5 = new User();
+        $user5->setEmail('dr.martin@gmail.com');
+        $user5->setPassword($this->passwordHasher->hashPassword(
+            $user5,
+            'password123' // for test purposes ; will change later
+        ));
+        $user5->setFirstName('Aline');
+        $user5->setLastName('Martin');
+        $user5->setPhone('0610885555');
+        $user5->setRoleId('2');
+        $manager->persist($user5);
+
         $manager->flush();
 
         $this->addReference('admin', $user1);
         $this->addReference('owner', $user2);
-        $this->addReference('vet', $user3);
+        $this->addReference('vet1', $user3);
+        $this->addReference('vet2', $user4);
+        $this->addReference('vet3', $user5);
     }
 }
