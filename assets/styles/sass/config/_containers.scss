@@ -1,0 +1,32 @@
+.section {
+    padding: 60px 0;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: $bp-xl) {
+    .container {
+        width: 960px; 
+    }
+}
+
+@media screen and (max-width: $bp-lg) {
+    .container {
+        width: 720px;
+    }
+}
+
+@media screen and (max-width: $bp-lg) {
+    .container {
+        width: 540px;
+    }
+}
+
+@media screen and (max-width: $bp-sm) {
+    .container {
+        width: 90%;
+    }
+}
