@@ -20,12 +20,16 @@ class DoctorController extends AbstractController
     #[Route('/doctors', name: 'doctors', methods: ['GET'])]
     public function index(): Response
     {
-        $repository = $this->em->getRepository(Doctor::class);
-        $doctors = $repository->find(4)->getUserId();
-        $userRepository = $this->em->getRepository(User::class);
-        $user = $userRepository->find($doctors);
-        dd($user->getFirstName());
-        dd($doctors);
+        // $doctors = $repository->findAll();
+        $query = $this->em->createQueryBuilder()
+        ->select('doctor', 'user')
+        ->from('App\Entity\Doctor', 'doctor')
+        ->leftJoin('doctor.userId', 'user')
+        ->getQuery();
+        
+        $doctors = $query->getResult();
+        // dd($doctors);
+        
         return $this->render('doctor/index.html.twig', [
             'doctors' => $doctors,
         ]);
@@ -34,9 +38,17 @@ class DoctorController extends AbstractController
     #[Route('/doctors/{id}', name: 'doctor', defaults: ['id' => null], methods: ['GET', 'HEAD'])]
     public function doctor($id): Response
     {
+        $repository = $this->em->getRepository(Doctor::class);
+        $doctor = $repository->find($id)->getUserId();
+        $userRepository = $this->em->getRepository(User::class);
+        $user = $userRepository->find($doctor);
+        $doctor2 = $repository->find($id);
+        // dd($doctor2);
+        // dd($doctor);
+        // dd($user->getFirstName());
+
         return $this->render('doctor/doctor.html.twig', [
-            'controller_name' => 'SingleDoctorController',
-            'id' => $id
+            'doctor' => $doctor2
         ]);
     }
 }

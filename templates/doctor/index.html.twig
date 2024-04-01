@@ -3,11 +3,21 @@
 {% block title %}Catalogue veterinaires{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Catalogue veterinaires</h1>
+<div class="section">
+    <div class="container">
+        <h2 class="text-center">Catalogue veterinaires</h2>
 
-    {% for doctor in doctors %}
-        <h2>{{doctor}}</h2>
-    {% endfor %}
+        <div class="doctor-card__wrapper">
+            {% for doctor in doctors %}
+                <div class="doctor-card">
+                    <a href="{{ path('doctor', {'id': doctor.id}) }}">
+                        <h4>{{ doctor.userId.firstName }} {{ doctor.userId.lastName }}</h4>
+                    </a>
+                    <img src="{{ doctor.imagePath }}" alt="">
+                    <p>{{ doctor.clinicName }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

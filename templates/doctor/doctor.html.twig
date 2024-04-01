@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page vet{% endblock %}
+{% block title %}Page vet {{ doctor.id }}{% endblock %}
 
 {% block body %}
 <div class="section bg-blue-50">
     <div class="container">
-        <h1 class="text-center">Hello {{ controller_name }}! ✅</h1>
-        <h4> Id in url : {{ id }}</h4>
+        <h1 class="text-center">Here is the page of Dr. id {{ doctor.id }}! ✅</h1>
     </div>
 </div>
 {% endblock %}

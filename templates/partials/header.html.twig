@@ -1,9 +1,14 @@
-<header class="header">
-    <div class="container-xl">
-        <nav>
-            <a href="/">
-                <img src="{{ asset('images/logo.svg') }}" alt="Logo">
-            </a>
-        </nav>
-    </div>
-</header>
+{% block header %}
+    <header class="header">
+        <div class="container-xl">
+            <nav>
+                <a href="/">
+                    <img src="{{ asset('images/logo.svg') }}" alt="Logo"> AnimaLife
+                </a>
+                <ul>
+                    <li><a href="{{ path('doctors') }}">Doctors</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+{% endblock %}
