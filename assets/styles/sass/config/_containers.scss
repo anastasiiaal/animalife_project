@@ -1,9 +1,15 @@
-.section {
+.section, section {
     padding: 60px 0;
 }
 
 .container {
     width: 1140px;
+    margin: 0 auto;
+}
+
+.container-xl {
+    width: 100%;
+    padding: 0 20px;
     margin: 0 auto;
 }
 

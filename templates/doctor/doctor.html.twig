@@ -3,14 +3,10 @@
 {% block title %}Page vet{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1 class="text-center">Hello {{ controller_name }}! ✅</h1>
-    <h1> {{ id }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/wamp64/www/animalife_project/src/Controller/DoctorController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/animalife_project/templates/doctor/index.html.twig</code></li>
-    </ul>
+<div class="section bg-blue-50">
+    <div class="container">
+        <h1 class="text-center">Hello {{ controller_name }}! ✅</h1>
+        <h4> Id in url : {{ id }}</h4>
+    </div>
 </div>
 {% endblock %}
