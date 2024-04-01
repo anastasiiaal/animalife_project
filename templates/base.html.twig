@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}AnimaLife 🐶{% endblock %}</title>
-        <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+        <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
         {% block stylesheets %}
             {# <link rel="stylesheet" href="{{ asset('styles/app.scss') }}"> #}
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
