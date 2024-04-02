@@ -22,10 +22,11 @@ class DoctorController extends AbstractController
     {
         // $doctors = $repository->findAll();
         $query = $this->em->createQueryBuilder()
-        ->select('doctor', 'user')
-        ->from('App\Entity\Doctor', 'doctor')
-        ->leftJoin('doctor.userId', 'user')
-        ->getQuery();
+            ->select('doctor', 'user', 'city')
+            ->from('App\Entity\Doctor', 'doctor')
+            ->leftJoin('doctor.userId', 'user')
+            ->leftJoin('doctor.cityId', 'city')
+            ->getQuery();
         
         $doctors = $query->getResult();
         // dd($doctors);

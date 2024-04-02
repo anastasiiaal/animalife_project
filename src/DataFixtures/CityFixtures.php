@@ -56,11 +56,6 @@ class CityFixtures extends Fixture
         $city9->setPostcode("69000");
         $manager->persist($city9);
 
-        $city9 = new City();
-        $city9->setCityName("Marseille");
-        $city9->setPostcode("13000");
-        $manager->persist($city9);
-
         $city10 = new City();
         $city10->setCityName("Nice");
         $city10->setPostcode("06000");
@@ -110,6 +105,11 @@ class CityFixtures extends Fixture
         $city19->setCityName("Montpellier");
         $city19->setPostcode("34000");
         $manager->persist($city19);
+
+        $city20 = new City();
+        $city20->setCityName("Marseille");
+        $city20->setPostcode("13000");
+        $manager->persist($city20);
 
         $manager->flush();
 

@@ -14,6 +14,8 @@
                     <div class="doctor-card__text">
                         <h4>Dr {{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</h4>
                         <p>{{ doctor.clinicName }}</p>
+                        <p>{{ doctor.address }}</p>
+                        <p>{{ doctor.cityId.cityName }}</p>
                     </div>
                 </a>
             {% endfor %}
