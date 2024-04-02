@@ -9,13 +9,13 @@
 
         <div class="doctor-card__wrapper">
             {% for doctor in doctors %}
-                <div class="doctor-card">
-                    <a href="{{ path('doctor', {'id': doctor.id}) }}">
-                        <h4>{{ doctor.userId.firstName }} {{ doctor.userId.lastName }}</h4>
-                    </a>
+                <a class="doctor-card" href="{{ path('doctor', {'id': doctor.id}) }}">
                     <img src="{{ doctor.imagePath }}" alt="">
-                    <p>{{ doctor.clinicName }}</p>
-                </div>
+                    <div class="doctor-card__text">
+                        <h4>Dr {{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</h4>
+                        <p>{{ doctor.clinicName }}</p>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </div>

@@ -1,0 +1,21 @@
+.doctor-card__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 50px;
+    .doctor-card {
+        width: 100%;
+        border: 1px solid $light-grey;
+        display: flex;
+
+        img {
+            height: 100px;
+            width: 100px;
+            object-fit: cover;
+        }
+
+        &__text {
+            padding: 20px;
+        }
+    }
+}
