@@ -17,6 +17,12 @@ class DoctorController extends AbstractController
         $this->em = $em;
     }
 
+    #[Route('/', name: 'home')]
+    public function home(): Response
+    {
+        return $this->render('home.html.twig');
+    }
+
     #[Route('/doctors', name: 'doctors', methods: ['GET'])]
     public function index(): Response
     {
