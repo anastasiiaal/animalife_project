@@ -2,11 +2,23 @@
     <header class="header">
         <div class="container-xl">
             <nav>
-                <a href="/">
-                    <img src="{{ asset('images/logo.svg') }}" alt="Logo"> AnimaLife
+                <a href="{{ path('home') }}" class="logo">
+                    {# <img src="{{ asset('images/logo.svg') }}" alt="Logo">  #}
+                    AnimaLife
                 </a>
-                <ul>
-                    <li><a href="{{ path('doctors') }}">Doctors</a></li>
+                <ul class="nav">
+                    <li>
+                        <a class="{{ app.request.attributes.get('_route') == 'home' ? 'active' : '' }}" href="{{ path('home') }}">Accueil</a>
+                    </li>
+                    <li>
+                        <a class="{{ app.request.attributes.get('_route') == 'doctors' ? 'active' : '' }}" href="{{ path('doctors') }}">Tous les véterinaires</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('doctors') }}">À propos de nous</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('doctors') }}">Urgence</a>
+                    </li>
                 </ul>
             </nav>
         </div>
