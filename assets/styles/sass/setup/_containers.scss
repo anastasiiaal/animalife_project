@@ -17,9 +17,17 @@
     margin: 0 auto;
 }
 
+.container-form {
+    width: 40%;
+}
+
 @media screen and (max-width: $bp-xl) {
     .container {
         width: 960px; 
+    }
+
+    .container-form {
+        width: 50%;
     }
 }
 
