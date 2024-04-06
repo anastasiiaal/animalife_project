@@ -1,8 +1,12 @@
-#home {
-    background-color: $light-blue;
+#hero {
+
+    .hero-wrapper {
+        width: 70%;
+        padding: 30px 0 100px;
+    }
 
     h1 {
-        margin: 30px 0;
+        margin: 40px 0;
     }
 
     .search-bar {
@@ -24,6 +28,7 @@
             outline: none;
             width: 100%;
             border-left: 1px solid $light-blue;
+            font-size: 14px;
             &.first {
                 border-radius: 25px 0px 0px 25px;
                 border: none;

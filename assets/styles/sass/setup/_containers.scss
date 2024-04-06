@@ -1,5 +1,9 @@
 .section, section {
     padding: 60px 0;
+
+    &.bg-blue {
+        background-color: #B4D3E1;
+    }
 }
 
 .container {

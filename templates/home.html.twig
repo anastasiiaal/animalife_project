@@ -3,23 +3,39 @@
 {% block title %}AnimaLife | Accueil{% endblock %}
 
 {% block body %}
-<div class="section" id="home">
+<section class="section bg-blue" id="hero">
     <div class="container">
-        <h1>Trouver un rendez-vous  avec un vétérinaire </h1>
-        <form action="" method="get" class="search-bar">
-            <div class="input-group">
-                <div class="input-wrapper">
-                    <input type="text" name="establishment" placeholder="Nom, établissement" class="input-field first"/>
+        <div class="hero-wrapper">
+            <h1>Trouver un rendez-vous  avec un vétérinaire </h1>
+            <form action="" method="get" class="search-bar">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" name="establishment" placeholder="Nom, établissement" class="input-field first"/>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" name="animal" placeholder="Quel est votre animal ?" class="input-field"/>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" name="location" placeholder="Où ?" class="input-field"/>
+                    </div>
+                    <button type="submit" class="search-button">Rechercher</button>
                 </div>
-                <div class="input-wrapper">
-                    <input type="text" name="animal" placeholder="Quel est votre animal ?" class="input-field"/>
-                </div>
-                <div class="input-wrapper">
-                    <input type="text" name="location" placeholder="Où ?" class="input-field"/>
-                </div>
-                <button type="submit" class="search-button">Rechercher</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+</section>
+<section class="">
+    <div class="container">
+        <h2 class="text-center">
+            Trouver un vétérinaire pour tous vos compagnons
+        </h2>
+    </div>
+</section>
+<section class="bg-blue">
+    <div class="container">
+        <h2 class="text-center">
+            La confidentialité des données
+        </h2>
+    </div>
+</section>
 {% endblock %}
