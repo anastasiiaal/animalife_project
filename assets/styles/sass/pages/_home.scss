@@ -12,7 +12,7 @@
     .search-bar {
         display: flex;
         justify-content: center;
-        border-radius: 25px;
+        border-radius: $radius-xl;
         font-size: 15px;
         .input-group {
             display: grid;
@@ -41,7 +41,7 @@
             border-left: 1px solid $light-blue;
             font-size: 14px;
             &.first {
-                border-radius: 25px 0px 0px 25px;
+                border-radius: $radius-xl 0px 0px $radius-xl;
                 border: none;
             }
             &::placeholder {
