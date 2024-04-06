@@ -10,13 +10,16 @@
             <form action="" method="get" class="search-bar">
                 <div class="input-group">
                     <div class="input-wrapper">
+                        <img src="{{ asset('images/search.svg') }}" alt="Loope">
                         <input type="text" name="establishment" placeholder="Nom, établissement" class="input-field first"/>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" name="animal" placeholder="Quel est votre animal ?" class="input-field"/>
+                        <img src="{{ asset('images/animal.svg') }}" alt="Animal">
+                        <input type="text" name="animal" placeholder="Type d'animal" class="input-field"/>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" name="location" placeholder="Où ?" class="input-field"/>
+                        <img src="{{ asset('images/location.svg') }}" alt="Ville">
+                        <input type="text" name="location" placeholder="Ville" class="input-field"/>
                     </div>
                     <button type="submit" class="search-button">Rechercher</button>
                 </div>
