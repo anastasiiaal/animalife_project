@@ -1,6 +1,5 @@
 header.header {
     height: 60px;
-    border-bottom: 1px solid $light-grey;
     display: flex;
     align-items: center;
     background-color: $light-blue;
@@ -30,13 +29,16 @@ header.header {
                     left: 10px;
                     height: 0px;
                     width: calc(100% - 20px);
-                    background-color: #82b5cd;
+                    background-color: $blue;
                     transition: $transition;
                 }
                 &:hover, &.active {
                     &:after {
                         height: 2px;
                     }
+                }
+                &.urgency {
+                    font-weight: 600;
                 }
             }
         }
