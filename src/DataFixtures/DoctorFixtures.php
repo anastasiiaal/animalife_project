@@ -19,7 +19,7 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor1->setCityId($this->getReference('Annecy'));
         $doctor1->setAddress('71 avenue des Alpes');
         $doctor1->setClinicName('Clinique des Alpes');
-        $doctor1->setIsEmergency(true);
+        $doctor1->setIsEmergency(false);
         $doctor1->addAnimalType($this->getReference('Chat'));
         $doctor1->addAnimalType($this->getReference('Chien'));
         $doctor1->addAnimalType($this->getReference('Lapin'));
@@ -69,11 +69,26 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor3->addService($this->getReference('service10'));
         $manager->persist($doctor3);
 
+        $doctor4 = new Doctor();
+        $doctor4->setUserId($this->getReference('vet4'));
+        $doctor4->setCityId($this->getReference('Lyon'));
+        $doctor4->setAddress('76 Rue Marius Berliet');
+        $doctor4->setClinicName('Mermoz Vet');
+        $doctor4->setIsEmergency(false);
+        $doctor4->addAnimalType($this->getReference('Hamster'));
+        $doctor4->addAnimalType($this->getReference('Rat'));
+        $doctor4->addAnimalType($this->getReference('Lapin'));
+        $doctor4->addService($this->getReference('service2'));
+        $doctor4->addService($this->getReference('service3'));
+        $doctor4->addService($this->getReference('service5'));
+        $manager->persist($doctor4);
+
         $manager->flush();
 
         $this->addReference('doctor1', $doctor1);
         $this->addReference('doctor2', $doctor2);
         $this->addReference('doctor3', $doctor3);
+        $this->addReference('doctor4', $doctor4);
     }
 
     public function getDependencies()

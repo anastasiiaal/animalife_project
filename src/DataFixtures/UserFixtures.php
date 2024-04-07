@@ -79,6 +79,18 @@ class UserFixtures extends Fixture
         $user5->setRoleId('2');
         $manager->persist($user5);
 
+        $user6 = new User();
+        $user6->setEmail('dr.richard@gmail.com');
+        $user6->setPassword($this->passwordHasher->hashPassword(
+            $user6,
+            'password123' // for test purposes ; will change later
+        ));
+        $user6->setFirstName('Antoine');
+        $user6->setLastName('Richard');
+        $user6->setPhone('0610882222');
+        $user6->setRoleId('2');
+        $manager->persist($user6);
+
         $manager->flush();
 
         $this->addReference('admin', $user1);
@@ -86,5 +98,6 @@ class UserFixtures extends Fixture
         $this->addReference('vet1', $user3);
         $this->addReference('vet2', $user4);
         $this->addReference('vet3', $user5);
+        $this->addReference('vet4', $user6);
     }
 }
