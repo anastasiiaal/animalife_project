@@ -8,10 +8,12 @@
         <h2 class="">Here is the page of Dr. id {{ doctor.id }}</h2>
         <p>{{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</p>
         <p>{{ doctor.userId.phone }}</p>
-        <img src="{{ doctor.imagePath }}" alt="" class="h-[100px] w-[100px]">
+        <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder_img.jpg') }}" alt="" class="h-[100px] w-[100px]">
         <p>{{ doctor.address }}</p>
         <p>{{ doctor.clinicName }}</p>
-        <ul>
+        <p>{{ doctor.cityId.postCode }} - {{ doctor.cityId.cityName }}</p>
+        <h3>Animals acceptés</h3>
+        <ul class="list">
             {% for type in doctor.getAnimalTypes() %}
                 <li>
                     {{ type.typeName }}
@@ -22,9 +24,9 @@
         {% if doctor.isEmergency %}
             <p>Veterinaire de garde ✔️</p>
         {% endif %}
-        <p>{{ doctor.cityId.postCode }} - {{ doctor.cityId.cityName }}</p>
         
-        <ul>
+        <h3>Services proposés</h3>
+        <ul class="list">
             {% for service in doctor.getServices() %}
                 <li>
                     {{ service.serviceName }}
