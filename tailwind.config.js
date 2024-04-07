@@ -7,20 +7,20 @@ module.exports = {
   theme: {
     extend: {},
     screens: {
+      // 1199px => 1400
       '2xl': {'max': '1400px'},
-      // => @media (max-width: 1535px) { ... }
 
+      // 993px => 1199px
       'xl': {'max': '1199px'},
-      // => @media (max-width: 1279px) { ... }
 
+      // 768px => 992px
       'lg': {'max': '992px'},
-      // => @media (max-width: 1023px) { ... }
 
+      // 577px => 767px
       'md': {'max': '767px'},
-      // => @media (max-width: 767px) { ... }
 
+      // 0 => 576px
       'sm': {'max': '576px'},
-      // => @media (max-width: 639px) { ... }
     }
   },
   plugins: [],
