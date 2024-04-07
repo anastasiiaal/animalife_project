@@ -33,10 +33,10 @@ class DoctorController extends AbstractController
             ->leftJoin('doctor.userId', 'user')
             ->leftJoin('doctor.cityId', 'city')
             ->getQuery();
-        
+
         $doctors = $query->getResult();
         // dd($doctors);
-        
+
         return $this->render('doctor/index.html.twig', [
             'doctors' => $doctors,
         ]);
@@ -45,17 +45,25 @@ class DoctorController extends AbstractController
     #[Route('/doctors/{id}', name: 'doctor', defaults: ['id' => null], methods: ['GET', 'HEAD'])]
     public function doctor($id): Response
     {
-        $repository = $this->em->getRepository(Doctor::class);
-        $doctor = $repository->find($id)->getUserId();
-        $userRepository = $this->em->getRepository(User::class);
-        $user = $userRepository->find($doctor);
-        $doctor2 = $repository->find($id);
-        // dd($doctor2);
-        // dd($doctor);
-        // dd($user->getFirstName());
+        $query = $this->em->createQueryBuilder()
+            ->select('doctor', 'user', 'city', 'animal_types', 'services')
+            ->from('App\Entity\Doctor', 'doctor')
+            ->leftJoin('doctor.userId', 'user')
+            ->leftJoin('doctor.cityId', 'city')
+            ->leftJoin('doctor.animalTypes', 'animal_types')
+            ->leftJoin('doctor.services', 'services')
+            ->where('doctor.id = :doctorId')
+            ->setParameter('doctorId', $id)
+            ->getQuery();
 
+        $doctor = $query->getOneOrNullResult();
+
+        if ($doctor === null) {
+            return $this->redirectToRoute('home'); // replace with error route once ready!!
+        }
+        // dd($doctor);
         return $this->render('doctor/doctor.html.twig', [
-            'doctor' => $doctor2
+            'doctor' => $doctor
         ]);
     }
 }
