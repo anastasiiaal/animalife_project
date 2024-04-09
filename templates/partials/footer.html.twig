@@ -1,7 +1,32 @@
 {% block footer %}
     <footer class="footer">
-        <section>
-            <p class="text-center">© 2022 Pet Clinic. All rights reserved.</p>
-        </section>
+        <div class="logo-wrapper" style="background-image: url('{{ asset('images/footer-wave.svg') }}');">
+            <a href="{{ path('home') }}">
+                <img src="{{ asset('images/logo-xl.svg') }}" alt="Logo">
+            </a>
+        </div>
+        <div class="container-xl footer__first">
+            <ul class="nav">
+                <li>
+                    <a href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li>
+                    <a href="{{ path('doctors') }}">Tous les véterinaires</a>
+                </li>
+                <li>
+                    <a href="{{ path('doctors') }}">À propos de nous</a>
+                </li>
+                <li>
+                    <a href="{{ path('doctors') }}" class="urgency">Urgence</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container-xl footer__last">
+            <p class="text-center">Copyright © 2024 Animalife, tous droits réservés</p>
+            <div class="links">
+                <a href="">Mentions légales</a>
+                <a href="">Conditions générales</a>
+            </div>
+        </div>
     </footer>
 {% endblock %}
