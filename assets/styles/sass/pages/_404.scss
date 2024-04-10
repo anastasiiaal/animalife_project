@@ -1,0 +1,12 @@
+#page404 {
+    background-color: $light-grey;
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    img {
+        width: 80%;
+        margin: 0 auto;
+    }
+}

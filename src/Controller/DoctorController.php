@@ -59,7 +59,8 @@ class DoctorController extends AbstractController
         $doctor = $query->getOneOrNullResult();
 
         if ($doctor === null) {
-            return $this->redirectToRoute('home'); // replace with error route once ready!!
+            // return $this->redirectToRoute('home'); // replace with error route once ready!!
+            return $this->render('error/404.html.twig');
         }
         // dd($doctor);
         return $this->render('doctor/doctor.html.twig', [
