@@ -27,6 +27,8 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor1->addService($this->getReference('service2'));
         $doctor1->addService($this->getReference('service7'));
         $doctor1->addService($this->getReference('service9'));
+        $doctor1->setSex('female');
+        $doctor1->setNameSlug('christine-durand-10');
         $manager->persist($doctor1);
 
         $doctor2 = new Doctor();
@@ -49,6 +51,8 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor2->addService($this->getReference('service6'));
         $doctor2->addService($this->getReference('service8'));
         $doctor2->addService($this->getReference('service9'));
+        $doctor2->setSex('male');
+        $doctor2->setNameSlug('paul-hubert-15');
         $manager->persist($doctor2);
 
         $doctor3 = new Doctor();
@@ -67,6 +71,8 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor3->addService($this->getReference('service5'));
         $doctor3->addService($this->getReference('service8'));
         $doctor3->addService($this->getReference('service10'));
+        $doctor3->setSex('female');
+        $doctor3->setNameSlug('aline-martin-4');
         $manager->persist($doctor3);
 
         $doctor4 = new Doctor();
@@ -81,6 +87,8 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor4->addService($this->getReference('service2'));
         $doctor4->addService($this->getReference('service3'));
         $doctor4->addService($this->getReference('service5'));
+        $doctor4->setSex('male');
+        $doctor4->setNameSlug('christine-durand-23');
         $manager->persist($doctor4);
 
         $manager->flush();

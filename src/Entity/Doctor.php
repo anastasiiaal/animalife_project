@@ -51,6 +51,12 @@ class Doctor
     #[ORM\ManyToMany(targetEntity: Service::class, inversedBy: 'doctors')]
     private Collection $services;
 
+    #[ORM\Column(length: 255)]
+    private ?string $sex = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nameSlug = null;
+
     public function __construct()
     {
         $this->animalTypes = new ArrayCollection();
@@ -233,6 +239,30 @@ class Doctor
     public function removeService(Service $service): static
     {
         $this->services->removeElement($service);
+
+        return $this;
+    }
+
+    public function getSex(): ?string
+    {
+        return $this->sex;
+    }
+
+    public function setSex(string $sex): static
+    {
+        $this->sex = $sex;
+
+        return $this;
+    }
+
+    public function getNameSlug(): ?string
+    {
+        return $this->nameSlug;
+    }
+
+    public function setNameSlug(string $nameSlug): static
+    {
+        $this->nameSlug = $nameSlug;
 
         return $this;
     }
