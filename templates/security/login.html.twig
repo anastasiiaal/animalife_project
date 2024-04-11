@@ -3,40 +3,50 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-<section id="login" class="bg-blue">
+<section id="login" class="bg-light-grey">
     <div class="container container-form">
-        <form method="post" class="login">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+        <h2 class="text-center mb-6">Me connecter</h2>
+        <div class="form-wrapper flex">
+            <form method="post" class="login">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
-            {% if app.user %}
-                <div class="mb-3">
-                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-                </div>
-            {% endif %}
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
 
-            <h2 class="text-center mb-6">Me connecter</h2>
 
-            <label for="inputEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Votre email" autocomplete="email" required autofocus>
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Adresse e-mail" autocomplete="email" required autofocus>
 
-            <label for="inputPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" autocomplete="current-password" required>
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" autocomplete="current-password" required>
 
-            <input type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}"
-            >
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
 
-            <button class="button submit button-lg" type="submit">
-                Se connecter
-            </button>
-        </form>
-        <div class="spacer"></div>
-        <p class="mt-10 text-center">
-            Nouveau sur AnimaLife ? <br><br>
-            <a href="" class="button">Créer un compte</a>
-        </p>
+                <button class="button" type="submit">
+                    Se connecter
+                </button>
+
+                <a href="" class="text-center text-xs underline mt-4">Mot de passe oublié ?</a>
+
+                <div class="spacer"></div>
+                <p class="text-center">
+                    Nouveau sur AnimaLife ? <br><br>
+                    <a href="" class="button">Créer un compte</a>
+                </p>
+            </form>
+            <div class="img-wrapper">
+                <img src="{{ asset('/images/login.jpg') }}" alt="">
+            </div>
+        </div>
+        
+        
     </div>
 </section>
 

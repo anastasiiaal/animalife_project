@@ -1,17 +1,38 @@
 #login {
+    .form-wrapper {
+        border-radius: $radius-lg;
+        box-shadow: $shadow-lg;
+        overflow: hidden;
+
+        form, .img-wrapper {
+            width: 50%;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    
     form.login {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
+        padding: 30px 30px 40px;
+        background-color: $white;
+        justify-content: center;
+
+        button.button {
+            align-self: center;
+        }
 
         input {
             margin: 10px 0 20px;
             padding: 10px 15px;
             font-size: 14px;
-            outline: none;
+            outline: 1px solid $grey;
             border-radius: $radius-md;
         }
-
-
     }
 }

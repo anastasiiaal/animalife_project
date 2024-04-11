@@ -4,6 +4,10 @@
     &.bg-blue {
         background-color: #B4D3E1;
     }
+
+    &.bg-light-grey {
+        background-color: $light-grey;
+    }
 }
 
 .container {
@@ -18,7 +22,7 @@
 }
 
 .container-form {
-    width: 40%;
+    width: 50%;
 }
 
 // 993px => 1199px
@@ -28,7 +32,7 @@
     }
 
     .container-form {
-        width: 50%;
+        width: 60%;
     }
 }
 
