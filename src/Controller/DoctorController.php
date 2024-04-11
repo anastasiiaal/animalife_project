@@ -17,12 +17,6 @@ class DoctorController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'home')]
-    public function home(): Response
-    {
-        return $this->render('home.html.twig');
-    }
-
     #[Route('/doctors', name: 'doctors', methods: ['GET'])]
     public function index(): Response
     {
@@ -42,8 +36,8 @@ class DoctorController extends AbstractController
         ]);
     }
 
-    #[Route('/doctors/{id}', name: 'doctor', defaults: ['id' => null], methods: ['GET', 'HEAD'])]
-    public function doctor($id): Response
+    #[Route('/doctors/{slug}', name: 'doctor', defaults: ['slug' => null], methods: ['GET', 'HEAD'])]
+    public function doctor($slug): Response
     {
         $query = $this->em->createQueryBuilder()
             ->select('doctor', 'user', 'city', 'animal_types', 'services')
@@ -52,8 +46,8 @@ class DoctorController extends AbstractController
             ->leftJoin('doctor.cityId', 'city')
             ->leftJoin('doctor.animalTypes', 'animal_types')
             ->leftJoin('doctor.services', 'services')
-            ->where('doctor.id = :doctorId')
-            ->setParameter('doctorId', $id)
+            ->where('doctor.nameSlug = :slug')
+            ->setParameter('slug', $slug)
             ->getQuery();
 
         $doctor = $query->getOneOrNullResult();

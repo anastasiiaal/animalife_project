@@ -9,7 +9,7 @@
 
         <div class="doctor-card__wrapper">
             {% for doctor in doctors %}
-                <a class="doctor-card" href="{{ path('doctor', {'id': doctor.id}) }}">
+                <a class="doctor-card" href="{{ path('doctor', {'slug': doctor.nameSlug}) }}">
                     <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder_img.jpg') }}" alt="">
                     <div class="doctor-card__text">
                         <h4>Dr {{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</h4>

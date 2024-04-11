@@ -88,7 +88,7 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
         $doctor4->addService($this->getReference('service3'));
         $doctor4->addService($this->getReference('service5'));
         $doctor4->setSex('male');
-        $doctor4->setNameSlug('christine-durand-23');
+        $doctor4->setNameSlug('antoine-richard-23');
         $manager->persist($doctor4);
 
         $manager->flush();

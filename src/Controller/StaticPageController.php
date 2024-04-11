@@ -8,6 +8,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class StaticPageController extends AbstractController
 {
+    
+    #[Route('/', name: 'home')]
+    public function home(): Response
+    {
+        return $this->render('home.html.twig');
+    }
+    
     #[Route('/mentions-legales', name: 'mentions-legales')]
     public function legalMentions(): Response
     {
