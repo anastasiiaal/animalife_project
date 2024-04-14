@@ -12,22 +12,52 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('firstName', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'placeholder' => 'Votre prénom',
+                    'class' => 'half'
+                ],
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'placeholder' => 'Votre nom de famille',
+                    'class' => 'half'
+                ],
+            ])
+            ->add('phone', TextType::class, [
+                'label' => 'Votre numéro de téléphone',
+                'attr' => [
+                    'placeholder' => 'Enter your phone number'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a phone number.',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^\+?\d{1,3}\s?\d{1,3}(\s?\d{1,4})*$/',
+                        'message' => 'Please enter a valid phone number.',
+                    ]),
+                ],
+            ])
             ->add('email', TextType::class, [
                 'label' => 'Adresse e-mail',
                 'attr' => [
-                    'autocomplete' => 'email',                     
-                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'autocomplete' => 'email',
                     'placeholder' => 'Votre adresse fonctionnel'
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label' => 'J\'accepte les conditions d\'utilisation',
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',

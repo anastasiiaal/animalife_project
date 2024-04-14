@@ -19,6 +19,8 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+        // by default, we set role id to 1 == normal user / pet owner 
+        $user->setRoleId(1);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

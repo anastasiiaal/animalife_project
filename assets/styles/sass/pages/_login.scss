@@ -22,9 +22,21 @@
         padding: 30px 30px 40px;
         background-color: $white;
         justify-content: center;
+        flex-wrap: wrap;
 
         button.button {
             align-self: center;
+        }
+
+        div:has(input[type=checkbox]) {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            input[type=checkbox] {
+                height: 15px;
+                width: 15px;
+            }
         }
 
         input[type=text],
