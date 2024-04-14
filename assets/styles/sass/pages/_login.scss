@@ -1,4 +1,4 @@
-#login {
+#login, #register {
     .form-wrapper {
         border-radius: $radius-lg;
         box-shadow: $shadow-lg;
@@ -15,7 +15,7 @@
         }
     }
     
-    form.login {
+    form {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
@@ -27,12 +27,16 @@
             align-self: center;
         }
 
-        input {
+        input[type=text],
+        input[type=password],
+        input[type=email] {
             margin: 10px 0 20px;
             padding: 10px 15px;
             font-size: 14px;
             outline: 1px solid $grey;
             border-radius: $radius-md;
+            display: block;
+            width: 100%;
         }
     }
 }

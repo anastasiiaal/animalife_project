@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<section id="register" class="bg-light-grey">
+    <div class="container container-form">
+        <h2 class="text-center mb-6">Créer un compte</h2>
+        <div class="form-wrapper flex">
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button class="button" type="submit">
+                    Créer mon compte
+                </button>
+            {{ form_end(registrationForm) }}
+
+
+            <div class="img-wrapper">
+                <img src="{{ asset('/images/register.jpg') }}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
