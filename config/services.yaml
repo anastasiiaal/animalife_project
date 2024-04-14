@@ -25,3 +25,6 @@ services:
     App\EventSubscriber\ExceptionSubscriber:
         tags:
             - { name: kernel.event_subscriber }
+    Symfony\Component\Security\Core\Security:
+        autowire: true
+        autoconfigure: true

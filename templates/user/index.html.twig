@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<section class="section">
+    <div class="container">
+        <h1>Bonjour {{ app.user.firstName }} {{ app.user.lastName }} ! </h1>
+        {% if app.user %}
+            <a href="/logout" class="button">Me deconnecter</a>
+        {% endif %}
+        {% for animal in animals %}
+            <li>{{ animal.name }}</li>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
