@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau animal{% endblock %}
+
+{% block body %}
+<div class="section" id="create_animal">
+    <div class="container container-form">
+        <h2 class="text-center mb-6">Créer un compte</h2>
+        <div class="form-wrapper flex">
+
+            {{ form_start(form) }}
+
+                {{ form_row(form.name) }}
+                {{ form_row(form.typeId) }}
+                {{ form_row(form.imagePath) }}
+                {{ form_row(form.dateBirth) }}
+                {{ form_row(form.sex) }}
+                {{ form_row(form.isSterilized) }}
+                {{ form_row(form.allergy) }}
+                {{ form_row(form.additionalInfo) }}
+                {# {{ form_row(form.vaccinations) }} #}
+                <button class="button" type="submit">
+                    Créer l'animal
+                </button>
+
+            {{ form_end(form) }}
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-#login, #register {
+#login, #register, #create_animal  {
     .form-wrapper {
         border-radius: $radius-lg;
         box-shadow: $shadow-lg;
@@ -41,7 +41,10 @@
 
         input[type=text],
         input[type=password],
-        input[type=email] {
+        input[type=email],
+        input[type=date],
+        textarea,
+        select {
             margin: 10px 0 20px;
             padding: 10px 15px;
             font-size: 14px;
@@ -49,6 +52,38 @@
             border-radius: $radius-md;
             display: block;
             width: 100%;
+        }
+    }
+
+    form[name=animal_form] {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        > div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        input[type=radio] {
+            width: 30px;
+        }
+
+        #animal_form_vaccinations {
+            display: flex;
+            max-width: 100%;
+            flex-wrap: wrap;
+            > label {
+                width: 44%;
+            }
+        }
+
+        #animal_form_sex, #animal_form_isSterilized {
+            margin: 10px 0 20px;
         }
     }
 }

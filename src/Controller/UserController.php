@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Animal;
 use App\Entity\PetOwner;
 use App\Entity\User;
+use App\Form\AnimalFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -76,5 +78,18 @@ class UserController extends AbstractController
 
         // Optionally handle other roles or invalid roleIds
         return $this->redirectToRoute('home');
+    }
+
+    #[Route('/account/new-animal', name: 'create_animal')]
+    public function createAnimal(): Response
+    {
+
+        $animal = new Animal();
+
+        $form = $this->createForm(AnimalFormType::class, $animal);
+
+        return $this->render('animal/create.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
