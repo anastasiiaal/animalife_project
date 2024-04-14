@@ -21,7 +21,7 @@ class UserController extends AbstractController
         $this->security = $security;
     }
 
-    #[Route('/account', name: 'user-account')]
+    #[Route('/account', name: 'user_account')]
     public function index(): Response
     {
         $user = $this->security->getUser();

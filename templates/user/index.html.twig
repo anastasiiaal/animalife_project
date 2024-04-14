@@ -3,15 +3,26 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-<section class="section">
+<section class="section" id="user_account">
     <div class="container">
-        <h1>Bonjour {{ app.user.firstName }} {{ app.user.lastName }} ! </h1>
-        {% if app.user %}
-            <a href="/logout" class="button">Me deconnecter</a>
-        {% endif %}
-        {% for animal in animals %}
-            <li>{{ animal.name }}</li>
-        {% endfor %}
+        <div class="user-header flex justify-between items-center">
+            <h3>Bonjour {{ app.user.firstName }} {{ app.user.lastName }} ! </h3>
+            {% if app.user %}
+                <a href="/logout" class="button outline">Me deconnecter</a>
+            {% endif %}
+        </div>
+        
+        <div class="animals-wrapper">
+            {% if animals %}
+                {% for animal in animals %}
+                    <li>{{ animal.name }}</li>
+                {% endfor %}
+            {% else %}
+                <h3>Aucun animal enregistré</h3>
+            {% endif %}
+        </div>
+        
+        <a href="" class="button">Ajouter un animal</a>
     </div>
 </section>
 {% endblock %}
