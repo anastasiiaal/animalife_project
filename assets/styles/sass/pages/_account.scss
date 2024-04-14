@@ -16,13 +16,23 @@
             display: flex;
             flex-wrap: wrap;
             margin-bottom: 15px;
+            gap: 20px;
 
             @media screen and (max-width: $bp-md) {
                 width: 100%;
             }
 
+            img {
+                height: 120px;
+                width: 120px;
+                border-radius: 100%;
+            }
+
             .btn-wrapper {
                 width: 100%;
+                display: flex;
+                gap: 10px;
+                justify-content: center;
             }
         }
     }

@@ -16,7 +16,7 @@
             {% if animals %}
                 {% for animal in animals %}
                     <div class="animal-card">
-                        <img src="{{ animal.imagePath ? animal.imagePath : asset('images/placeholder_img.jpg') }}" class="h-[100px] w-[100px]" alt="Image de {{ animal.name }}">
+                        <img src="{{ animal.imagePath ? animal.imagePath : asset('images/placeholder_img.jpg') }}" alt="Image de {{ animal.name }}">
                         <div class="animal-card__text">
                             <h3>{{ animal.name }}</h3>
                             <h4>{{ animal.typeName }}</h4>
@@ -31,10 +31,13 @@
                             {% endif %}
                         </div>
                         <div class="btn-wrapper">
+                            <a href="" class="button outline">
+                                Télecharger ma fiche
+                            </a>
                             <a href="" class="button">
                                 Voir l'historique
                             </a>
-                            <a href="" class="button outline">
+                            <a href="" class="button outline" id="modify">
                                 Modifier
                             </a>
                         </div>
