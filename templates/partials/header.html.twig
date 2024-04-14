@@ -21,7 +21,12 @@
                     </li>
                 </ul>
                 <div class="flex gap-2">
+                {# {% if app.user and app.user.roleId == 1 %} #}
+                {% if app.user %}
+                    <a href="{{ path('home') }}" class="button">Mon compte</a>
+                {% else %}
                     <a href="{{ path('app_login') }}" class="button">Se connecter</a>
+                {% endif %}
                     <a href="{{ path('app_login') }}" class="button outline">Vous êtes vétérinaire ?</a>
                 </div>
             </nav>
