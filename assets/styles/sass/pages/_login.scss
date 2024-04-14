@@ -1,4 +1,4 @@
-#login {
+#login, #register {
     .form-wrapper {
         border-radius: $radius-lg;
         box-shadow: $shadow-lg;
@@ -15,24 +15,40 @@
         }
     }
     
-    form.login {
+    form {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
         padding: 30px 30px 40px;
         background-color: $white;
         justify-content: center;
+        flex-wrap: wrap;
 
         button.button {
             align-self: center;
         }
 
-        input {
+        div:has(input[type=checkbox]) {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            input[type=checkbox] {
+                height: 15px;
+                width: 15px;
+            }
+        }
+
+        input[type=text],
+        input[type=password],
+        input[type=email] {
             margin: 10px 0 20px;
             padding: 10px 15px;
             font-size: 14px;
             outline: 1px solid $grey;
             border-radius: $radius-md;
+            display: block;
+            width: 100%;
         }
     }
 }
