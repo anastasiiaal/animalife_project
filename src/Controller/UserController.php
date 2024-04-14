@@ -45,10 +45,27 @@ class UserController extends AbstractController
             }
 
             $animals = $petOwner->getAnimals();
+            $animalDetails = [];
 
+            // Populate animal details including type name
+            foreach ($animals as $animal) {
+                $animalDetails[] = [
+                    'id' => $animal->getId(),
+                    'name' => $animal->getName(),
+                    'imagePath' => $animal->getImagePath(),
+                    'dateBirth' => $animal->getDateBirth() ? $animal->getDateBirth()->format('Y-m-d') : null,
+                    'sex' => $animal->getSex(),
+                    'isSterilized' => $animal->isIsSterilized(),
+                    'allergy' => $animal->getAllergy(),
+                    'additionalInfo' => $animal->getAdditionalInfo(),
+                    'typeName' => $animal->getTypeId() ? $animal->getTypeId()->getTypeName() : 'Unknown',
+                ];
+            }
+
+            // dd($animalDetails);
             return $this->render('user/index.html.twig', [
                 'user' => $user,
-                'animals' => $animals
+                'animals' => $animalDetails
             ]);
         } else if ($user->getRoleId() == 2) {
             // Handle users with roleId == 2, e.g., doctors

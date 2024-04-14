@@ -15,7 +15,30 @@
         <div class="animals-wrapper">
             {% if animals %}
                 {% for animal in animals %}
-                    <li>{{ animal.name }}</li>
+                    <div class="animal-card">
+                        <img src="{{ animal.imagePath ? animal.imagePath : asset('images/placeholder_img.jpg') }}" class="h-[100px] w-[100px]" alt="Image de {{ animal.name }}">
+                        <div class="animal-card__text">
+                            <h3>{{ animal.name }}</h3>
+                            <h4>{{ animal.typeName }}</h4>
+                            <p>{{ animal.sex == "male" ? "Mâle" : "Femelle" }}</p>
+                            <p>Né le : {{ animal.dateBirth ? animal.dateBirth : "Pas renseigné" }}</p>
+                            <p>{{ animal.isSterilized ? "Stérilisé" : "Pas stérélisé" }}</p>
+
+                            {% if animal.allergy != null %}
+                                <p>Allérgique à : {{ animal.allergy }}</p>
+                            {% else %}
+                                <p>Pas d'allérgies connues</p>
+                            {% endif %}
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="" class="button">
+                                Voir l'historique
+                            </a>
+                            <a href="" class="button outline">
+                                Modifier
+                            </a>
+                        </div>
+                    </div>
                 {% endfor %}
             {% else %}
                 <h3>Aucun animal enregistré</h3>
