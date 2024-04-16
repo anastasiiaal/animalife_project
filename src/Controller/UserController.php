@@ -89,7 +89,7 @@ class UserController extends AbstractController
         $user = $this->security->getUser();
         
         $petOwner = $this->em->getRepository(PetOwner::class)->findOneBy(['userId' => $user]);
-        
+        // dd($petOwner);
         if (!$petOwner) {
             return $this->redirectToRoute('error404');
         }
