@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends AbstractController
 {
@@ -81,12 +82,30 @@ class UserController extends AbstractController
     }
 
     #[Route('/account/new-animal', name: 'create_animal')]
-    public function createAnimal(): Response
+    public function createAnimal(Request $request): Response
     {
 
         $animal = new Animal();
-
+        $user = $this->security->getUser();
+        
+        $petOwner = $this->em->getRepository(PetOwner::class)->findOneBy(['userId' => $user]);
+        
+        if (!$petOwner) {
+            return $this->redirectToRoute('error404');
+        }
+        
+        $animal->setOwnerId($petOwner); 
+        
         $form = $this->createForm(AnimalFormType::class, $animal);
+        $form->handleRequest($request);
+        // dd($form);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($animal);
+            $this->em->flush();
+
+            return $this->redirectToRoute('user_account');
+        }
 
         return $this->render('animal/create.html.twig', [
             'form' => $form->createView()

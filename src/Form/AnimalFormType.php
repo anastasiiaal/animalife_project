@@ -18,7 +18,7 @@ class AnimalFormType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => "Type d'animal"
+                'label' => "Nom de l'animal"
             ])
             ->add('imagePath')
             ->add('dateBirth', null, [
@@ -32,6 +32,7 @@ class AnimalFormType extends AbstractType
                 'expanded' => true,  // pour faire radiobuttons
                 'multiple' => false,  // avec une seule option
                 'label' => 'Sexe',
+                'data' => 'male'
             ])
             ->add('isSterilized', ChoiceType::class, [
                 'choices' => [
@@ -46,23 +47,12 @@ class AnimalFormType extends AbstractType
             ])
             ->add('allergy')
             ->add('additionalInfo')
-            // ->add('ownerId', EntityType::class, [
-            //     'class' => PetOwner::class,
-            //     'choice_label' => 'id',
-            // ])
             ->add('typeId', EntityType::class, [
                 'class' => AnimalType::class,
                 'choice_label' => 'typeName',
                 'choice_value' => 'id',
                 'label' => "Type d'animal"
             ])
-            // ->add('vaccinations', EntityType::class, [
-            //     'class' => Vaccination::class,
-            //     'choice_label' => 'title',
-            //     'multiple' => true,
-            //     'expanded' => true,
-            //     'label' => "Vaccinations"
-            // ])
         ;
     }
 
