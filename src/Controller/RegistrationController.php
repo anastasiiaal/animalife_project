@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\PetOwner;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
@@ -35,6 +36,11 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $petOwner = new PetOwner();
+            $petOwner->setUserId($user); // Linking the User to the PetOwner
+            $entityManager->persist($petOwner);
+            $entityManager->flush(); // Final flush to save everything
 
             // do anything else you need here, like send an email
 
