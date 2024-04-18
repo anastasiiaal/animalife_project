@@ -17,6 +17,9 @@
             flex-wrap: wrap;
             margin-bottom: 15px;
             gap: 20px;
+            &:hover {
+                box-shadow: $shadow-xl;
+            }
 
             @media screen and (max-width: $bp-md) {
                 width: 100%;
@@ -26,6 +29,7 @@
                 height: 120px;
                 width: 120px;
                 border-radius: 100%;
+                object-fit: cover;
             }
 
             .btn-wrapper {

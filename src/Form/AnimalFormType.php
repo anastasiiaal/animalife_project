@@ -23,7 +23,6 @@ class AnimalFormType extends AbstractType
             ])
             ->add('imagePath', FileType::class, [
                 'label' => 'Image de votre animal'
-                // 19th, 16m27s
             ])
             ->add('dateBirth', null, [
                 'widget' => 'single_text',

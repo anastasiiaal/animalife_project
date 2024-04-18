@@ -19,7 +19,7 @@
             {% if animals %}
                 {% for animal in animals %}
                     <div class="animal-card">
-                        <img src="{{ animal.imagePath ? animal.imagePath : asset('images/placeholder_img.jpg') }}" alt="Image de {{ animal.name }}">
+                        <img src="{{ animal.imagePath ? animal.imagePath : asset('images/placeholder.png') }}" alt="Image de {{ animal.name }}">
                         <div class="animal-card__text">
                             <h3>{{ animal.name }}</h3>
                             <h4>{{ animal.typeName }}</h4>
