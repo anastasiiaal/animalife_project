@@ -9,6 +9,7 @@ use App\Entity\Vaccination;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +21,10 @@ class AnimalFormType extends AbstractType
             ->add('name', null, [
                 'label' => "Nom de l'animal"
             ])
-            ->add('imagePath')
+            ->add('imagePath', FileType::class, [
+                'label' => 'Image de votre animal'
+                // 19th, 16m27s
+            ])
             ->add('dateBirth', null, [
                 'widget' => 'single_text',
             ])

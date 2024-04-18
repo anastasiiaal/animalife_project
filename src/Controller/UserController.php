@@ -9,6 +9,7 @@ use App\Form\AnimalFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -101,6 +102,24 @@ class UserController extends AbstractController
         // dd($form);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // $newAnimal = $form->getData();
+            
+            $imagePath = $form->get('imagePath')->getData();
+            if ($imagePath) {
+                $newFileName = uniqid() . '.' . $imagePath->guessExtension();
+
+                try {
+                    $imagePath->move(
+                        $this->getParameter('kernel.project_dir') . '/public/uploads',
+                        $newFileName
+                    );
+                } catch(FileException $e) {
+                    return new Response($e->getMessage());
+                }
+
+                $animal->setImagePath('/uploads/' . $newFileName);
+            }
+
             $this->em->persist($animal);
             $this->em->flush();
 
