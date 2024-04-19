@@ -6,6 +6,9 @@
 <div class="section" id="update_animal">
     <div class="container container-form">
         <h2 class="text-center mb-6">Modifier la fiche de {{ animal.name }}</h2>
+                <a href="{{ path('delete_animal', {'id': animal.id}) }}" class="button outline" type="submit">
+                    Supprimer l'animal
+                </a>
         <div class="form-wrapper flex">
 
             {{ form_start(form) }}
@@ -21,7 +24,7 @@
                 {# {{ form_row(form.vaccinations) }} #}
                 <button class="button" type="submit">
                     Sauvegarder
-                </button>
+                </button>                
 
             {{ form_end(form) }}
 

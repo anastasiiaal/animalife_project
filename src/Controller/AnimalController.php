@@ -124,4 +124,29 @@ class AnimalController extends AbstractController
         ]);
     }
 
+    #[Route('/account/delete-animal/{id}', methods: ['GET', 'DELETE'], name: 'delete_animal')]
+    public function deleteAnimal($id, Request $request): Response
+    {
+        $animal = $this->em->getRepository(Animal::class)->find($id);
+
+        // Vérifier si l'animal existe
+        if (!$animal) {
+            $this->addFlash('error', 'Animal introuvable.');
+            return $this->redirectToRoute('list_animals');
+        }
+    
+        $user = $this->security->getUser();
+        $petOwner = $this->em->getRepository(PetOwner::class)->findOneBy(['userId' => $user]);
+    
+
+        if ($animal->getOwnerId() !== $petOwner) {
+            $this->addFlash('error', 'Vous n\'avez pas le droit de supprimer cet animal.');
+            return $this->redirectToRoute('user_account');
+        } else {
+            $this->em->remove($animal);
+            $this->em->flush();
+
+            return $this->redirectToRoute('user_account');
+        }
+    }
 }
