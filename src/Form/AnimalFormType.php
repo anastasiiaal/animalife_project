@@ -6,6 +6,9 @@ use App\Entity\Animal;
 use App\Entity\AnimalType;
 use App\Entity\PetOwner;
 use App\Entity\Vaccination;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
@@ -19,15 +22,26 @@ class AnimalFormType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => "Nom de l'animal"
+                'label' => "Nom de l'animal",
+                'attr' => array(
+                    'class' => '',
+                    'placeholder' => 'Minou'
+                ),
             ])
             ->add('imagePath', FileType::class, [
                 'label' => 'Image de votre animal',
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'attr' => array(
+                    'class' => ''
+                ),
             ])
             ->add('dateBirth', null, [
+                'label' => 'Date ne naissance',
                 'widget' => 'single_text',
+                'attr' => array(
+                    'class' => ''
+                ),
             ])
             ->add('sex', ChoiceType::class, [
                 'choices' => [
@@ -36,20 +50,40 @@ class AnimalFormType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => false,
-                'label' => 'Sexe'
+                'label' => 'Sexe',
+                'attr' => array(
+                    'class' => ''
+                )
             ])
             ->add('isSterilized', ChoiceType::class, [
                 'choices' => [
+                    'Je ne sais pas' => null,
                     'Oui' => true,
                     'Non' => false,
-                    'Je ne sais pas' => null,
                 ],
                 'expanded' => true,
                 'multiple' => false,
-                'label' => 'Sterilisé.e ?'
+                'label' => 'Sterilisé.e ?',
+                'attr' => array(
+                    'class' => ''
+                ),
             ])
-            ->add('allergy')
-            ->add('additionalInfo')
+            ->add('allergy', TextType::class, [
+                'label' => 'Allergies connues',
+                'attr' => array(
+                    'class' => '',
+                    'placeholder' => 'e.g., Arachides, crustacés'
+                ),
+                'required' => false,
+            ])
+            ->add('additionalInfo', TextareaType::class, [
+                'label' => 'Informations supplémentaires',
+                'required' => false,
+                'attr' => array(
+                    'class' => '',
+                    'placeholder' => 'e.g., Crises d\'épilepsie depuis l\'age de 3 mois'
+                ),
+            ])
             ->add('typeId', EntityType::class, [
                 'class' => AnimalType::class,
                 'choice_label' => 'typeName',

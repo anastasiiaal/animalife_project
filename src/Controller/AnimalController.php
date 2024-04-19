@@ -33,19 +33,22 @@ class AnimalController extends AbstractController
         $user = $this->security->getUser();
         
         $petOwner = $this->em->getRepository(PetOwner::class)->findOneBy(['userId' => $user]);
-        // dd($petOwner);
+        
         if (!$petOwner) {
             return $this->redirectToRoute('error404');
         }
         
         $animal->setOwnerId($petOwner); 
+
+        if ($animal->getSex() === null) {
+            $animal->setSex('male');
+        }
         
         $form = $this->createForm(AnimalFormType::class, $animal);
         $form->handleRequest($request);
-        // dd($form);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $newAnimal = $form->getData();
             
             $imagePath = $form->get('imagePath')->getData();
             if ($imagePath) {
