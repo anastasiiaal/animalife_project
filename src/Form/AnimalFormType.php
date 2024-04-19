@@ -22,7 +22,9 @@ class AnimalFormType extends AbstractType
                 'label' => "Nom de l'animal"
             ])
             ->add('imagePath', FileType::class, [
-                'label' => 'Image de votre animal'
+                'label' => 'Image de votre animal',
+                'required' => false,
+                'mapped' => false
             ])
             ->add('dateBirth', null, [
                 'widget' => 'single_text',

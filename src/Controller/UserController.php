@@ -2,17 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Animal;
 use App\Entity\PetOwner;
 use App\Entity\User;
-use App\Form\AnimalFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends AbstractController
 {
@@ -82,52 +78,5 @@ class UserController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
-    #[Route('/account/new-animal', name: 'create_animal')]
-    public function createAnimal(Request $request): Response
-    {
-
-        $animal = new Animal();
-        $user = $this->security->getUser();
-        
-        $petOwner = $this->em->getRepository(PetOwner::class)->findOneBy(['userId' => $user]);
-        // dd($petOwner);
-        if (!$petOwner) {
-            return $this->redirectToRoute('error404');
-        }
-        
-        $animal->setOwnerId($petOwner); 
-        
-        $form = $this->createForm(AnimalFormType::class, $animal);
-        $form->handleRequest($request);
-        // dd($form);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $newAnimal = $form->getData();
-            
-            $imagePath = $form->get('imagePath')->getData();
-            if ($imagePath) {
-                $newFileName = uniqid() . '.' . $imagePath->guessExtension();
-
-                try {
-                    $imagePath->move(
-                        $this->getParameter('kernel.project_dir') . '/public/uploads',
-                        $newFileName
-                    );
-                } catch(FileException $e) {
-                    return new Response($e->getMessage());
-                }
-
-                $animal->setImagePath('/uploads/' . $newFileName);
-            }
-
-            $this->em->persist($animal);
-            $this->em->flush();
-
-            return $this->redirectToRoute('user_account');
-        }
-
-        return $this->render('animal/create.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
+    
 }
