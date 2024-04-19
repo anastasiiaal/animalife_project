@@ -34,21 +34,19 @@ class AnimalFormType extends AbstractType
                     'Mâle' => 'male',
                     'Femelle' => 'female',
                 ],
-                'expanded' => true,  // pour faire radiobuttons
-                'multiple' => false,  // avec une seule option
-                'label' => 'Sexe',
-                'data' => 'male'
+                'expanded' => true,
+                'multiple' => false,
+                'label' => 'Sexe'
             ])
             ->add('isSterilized', ChoiceType::class, [
                 'choices' => [
-                    'Oui' => 1,
-                    'Non' => 0,
+                    'Oui' => true,
+                    'Non' => false,
                     'Je ne sais pas' => null,
                 ],
                 'expanded' => true,
                 'multiple' => false,
-                'label' => 'Sterilisé.e ?',
-                'placeholder' => false,
+                'label' => 'Sterilisé.e ?'
             ])
             ->add('allergy')
             ->add('additionalInfo')

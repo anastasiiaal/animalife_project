@@ -87,7 +87,7 @@ class AnimalController extends AbstractController
         $petOwner = $this->em->getRepository(PetOwner::class)->findOneBy(['userId' => $user]);
 
         if ($animal->getOwnerId() !== $petOwner) {
-            throw $this->createAccessDeniedException('You are not authorized to edit this animal.');
+            return $this->redirectToRoute('error403');
         }
 
         $form = $this->createForm(AnimalFormType::class, $animal);
@@ -106,7 +106,6 @@ class AnimalController extends AbstractController
 
                     $animal->setImagePath('/uploads/' . $newFileName);
                 } catch (FileException $e) {
-                    
                     return new Response($e->getMessage());
                 }
             }
