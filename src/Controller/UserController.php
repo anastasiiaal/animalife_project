@@ -63,7 +63,7 @@ class UserController extends AbstractController
             }
 
             // dd($animalDetails);
-            return $this->render('user/index.html.twig', [
+            return $this->render('user/user.html.twig', [
                 'user' => $user,
                 'animals' => $animalDetails
             ]);

@@ -4,21 +4,28 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        // gap: 15px;
+        // justify-content: space-between;
+        justify-content: flex-start;
+        gap: 2%;
 
         .animal-card {
             padding: 20px;
+            padding-top: 50px;
             box-shadow: $shadow-md;
             background-color: $white;
             border-radius: $radius-lg;
-            width: 49%;
+            width: 32%;
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             gap: 20px;
+            position: relative;
             &:hover {
                 box-shadow: $shadow-xl;
+            }
+
+            @media screen and (max-width: $bp-lg) {
+                width: 49%;
             }
 
             @media screen and (max-width: $bp-md) {
@@ -26,8 +33,8 @@
             }
 
             img {
-                height: 120px;
-                width: 120px;
+                height: 90px;
+                width: 90px;
                 border-radius: 100%;
                 object-fit: cover;
             }
@@ -36,7 +43,23 @@
                 width: 100%;
                 display: flex;
                 gap: 10px;
-                justify-content: center;
+                justify-content: space-between;
+            }
+
+            &__text {
+                p {
+                    margin: 2px 0;
+                }
+            }
+
+            #btns-top {
+                position: absolute;
+                top: 11px;
+                right: 11px;
+            }
+
+            #modify {
+                padding: 5px;
             }
         }
     }
