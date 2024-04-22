@@ -1,4 +1,7 @@
-#login, #register, #create_animal  {
+#login, 
+#register,
+#create_animal, 
+#update_animal  {
     .form-wrapper {
         border-radius: $radius-lg;
         box-shadow: $shadow-lg;
@@ -43,6 +46,7 @@
         input[type=password],
         input[type=email],
         input[type=date],
+        input[type=file],
         textarea,
         select {
             margin: 10px 0 20px;

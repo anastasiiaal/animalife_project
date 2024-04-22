@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ErrorController!{% endblock %}
+
+{% block body %}
+<div class="section" id="page404">
+    <div class="container">
+        <img src="{{ asset('images/403.png') }}" alt="">
+        <h4 class="text-center mt-3">
+            Oups ! Il semble que notre perroquet portier n'a pas trouvé votre nom sur la liste. Accès interdit !
+        </h4>
+        <a href="{{ path('home') }}" class="button button-lg mt-6">Retour à l'accueil</a>
+    </div>
+</div>
+{% endblock %}
