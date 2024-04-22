@@ -51,4 +51,32 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form,
         ]);
     }
+
+    #[Route('/doctor/register', name: 'vet_register')]
+    public function vetRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    {
+        $user = new User();
+        $user->setRoleId(2);
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_login'); // should add redirect to doctor info setup
+        }
+
+        return $this->render('registration/vet_register.html.twig', [
+            'registrationForm' => $form,
+        ]);
+    }
 }

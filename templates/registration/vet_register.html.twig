@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<section id="register" class="bg-light-grey">
+    <div class="container container-form">
+        <h2 class="text-center mb-6">Créer mon compte professionnel de santé</h2>
+        <div class="form-wrapper flex">
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.firstName) }}
+                {{ form_row(registrationForm.lastName) }}
+                {{ form_row(registrationForm.phone) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <div class="flex justify-center gap-2">
+                    <button class="button" type="submit">
+                        S'inscrire
+                    </button>
+                    <a href="{{ path('app_login') }}" class="button outline">Déjà membre ?</a>
+                </div>
+            {{ form_end(registrationForm) }}
+
+
+            <div class="img-wrapper">
+                <img src="{{ asset('/images/vet-register.jpg') }}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
