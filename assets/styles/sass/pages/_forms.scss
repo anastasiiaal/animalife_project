@@ -27,6 +27,10 @@
         justify-content: center;
         flex-wrap: wrap;
 
+        @media screen and (max-width: $bp-sm) {
+            padding: 20px;
+        }
+
         button.button {
             align-self: center;
         }
@@ -86,8 +90,52 @@
             }
         }
 
-        #animal_form_sex, #animal_form_isSterilized {
+        #animal_form_isSterilized,
+        #animal_form_sex {
             margin: 10px 0 20px;
+    
+            input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                z-index: -1;
+            }
+    
+            label {
+                cursor: pointer;
+                padding: 8px 10px;
+                border: 1px solid transparent;
+                display: inline-block;
+                box-sizing: border-box;
+                width: 20%;
+                min-width: 105px;
+                margin: 0;
+                transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+                text-align: center;
+                border: 1px solid $grey;
+                // border-radius: $radius-md;
+                color: $grey;
+
+                &:first-of-type {
+                    border-radius: $radius-md 0 0 $radius-md;
+                }
+
+                &:last-of-type {
+                    border-radius: 0 $radius-md $radius-md 0;
+                }
+            }
+    
+            input[type="radio"]:checked + label {
+                background-color: $dark-blue;
+                color: white;
+                border-color: $dark-blue; 
+            }
+          
+    
+            label:hover {
+                background-color: $dark-blue;
+                border-color: $dark-blue; 
+                color: $white;
+            }
         }
     }
 }
