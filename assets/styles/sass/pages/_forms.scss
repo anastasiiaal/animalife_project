@@ -1,7 +1,8 @@
 #login, 
 #register,
 #create_animal, 
-#update_animal  {
+#update_animal,
+#update_doctor  {
     .form-wrapper {
         border-radius: $radius-lg;
         box-shadow: $shadow-lg;
@@ -137,5 +138,9 @@
                 color: $white;
             }
         }
+    }
+
+    form[name=doctor_form] {
+        width: 100%;
     }
 }

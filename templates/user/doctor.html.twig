@@ -9,7 +9,7 @@
             <h3>Compte de Dr.{{ app.user.lastName }} {{ app.user.firstName }} </h3>
             {% if app.user %}
                 <div class="btn-wrapper flex gap-2">
-                    <a href="" class="button outline">Modifier mon compte</a>
+                    <a href="{{ path('user_edit') }}" class="button outline">Modifier mon compte</a>
                     <a href="/logout" class="button outline">Me deconnecter</a>
                 </div>
             {% endif %}
