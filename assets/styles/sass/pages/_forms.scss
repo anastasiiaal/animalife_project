@@ -1,7 +1,8 @@
 #login, 
 #register,
 #create_animal, 
-#update_animal  {
+#update_animal,
+#update_doctor  {
     .form-wrapper {
         border-radius: $radius-lg;
         box-shadow: $shadow-lg;
@@ -35,15 +36,51 @@
             align-self: center;
         }
 
+        &> div {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+        }
+
+        .two-cols {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            gap: 20px;
+            flex-direction: row;
+            > div {
+                width: calc(50% - 10px);
+            }
+
+            @media screen and (max-width: $bp-sm) {
+                flex-direction: column;
+                gap: 0;
+                > div {
+                    width: 100%;
+                }
+            }
+        }
+
         div:has(input[type=checkbox]) {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
+            width: 100%;
             input[type=checkbox] {
                 height: 15px;
                 width: 15px;
+                accent-color: $dark-blue;
             }
+            div label {
+                width: calc(50% - 35px); // gap 20 + input width 15
+            }
+        }
+
+        div:has(input#registration_form_agreeTerms) {
+            flex-direction: row;
         }
 
         input[type=text],
@@ -60,6 +97,10 @@
             border-radius: $radius-md;
             display: block;
             width: 100%;
+        }
+
+        .btn-wrapper {
+            flex-direction: row;
         }
     }
 
@@ -137,5 +178,9 @@
                 color: $white;
             }
         }
+    }
+
+    form[name=doctor_form] {
+        width: 100%;
     }
 }

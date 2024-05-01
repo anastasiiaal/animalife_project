@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Doctor;
 use App\Entity\PetOwner;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -48,6 +51,48 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
+            'registrationForm' => $form,
+        ]);
+    }
+
+    #[Route('/doctor/register', name: 'vet_register')]
+    public function vetRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, Security $security): Response
+    {
+        $user = new User();
+        $user->setRoleId(2);
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $nameSlug = strtolower($user->getFirstName()) . '-' . strtolower($user->getLastName()) . '-' . ($user->getId() * 7 + 121);
+
+            $doctor = new Doctor();
+            $doctor->setUserId($user);
+            $doctor->setNameSlug($nameSlug);
+            $doctor->setIsEmergency(false);
+            $entityManager->persist($doctor);
+            $entityManager->flush();
+
+            // return $this->redirectToRoute('app_login'); // should add redirect to doctor info setup
+            $security->login($user, LoginFormAuthenticator::class, 'main');
+            return $this->redirectToRoute('user_edit');
+    
+            // return $this->redirectToRoute('user_account');
+            // return $this->redirectToRoute('vet_info');
+        }
+
+        return $this->render('registration/vet_register.html.twig', [
             'registrationForm' => $form,
         ]);
     }

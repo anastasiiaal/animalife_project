@@ -27,9 +27,10 @@
                 {% else %}
                     <a href="{{ path('app_login') }}" class="button">Se connecter</a>
                 {% endif %}
-                    <a href="{{ path('app_login') }}" class="button outline">Vous êtes vétérinaire ?</a>
+                    <a href="{{ path('vet_register') }}" class="button outline">Vous êtes vétérinaire ?</a>
                 </div>
             </nav>
         </div>
     </header>
+    {# {{ dump(app.user) }} #}
 {% endblock %}

@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Doctor;
 use App\Entity\PetOwner;
 use App\Entity\User;
+use App\Form\DoctorFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -69,8 +73,9 @@ class UserController extends AbstractController
             ]);
         } else if ($user->getRoleId() == 2) {
             // Handle users with roleId == 2, e.g., doctors
+            $doctor = $this->em->getRepository(Doctor::class)->findOneBy(['userId' => $user]);
             return $this->render('user/doctor.html.twig', [
-                'user' => $user
+                'doctor' => $doctor
             ]);
         }
 
@@ -78,5 +83,57 @@ class UserController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
+    #[Route('/account/edit', name: 'user_edit')]
+    public function editAccount(Request $request, Security $security): Response
+    {
+        // Assuming you have a method to get the current user
+        $user = $security->getUser();
+        // dd($user);
+
+        if (!$user) {
+            return $this->redirectToRoute('app_login'); // Redirect to login
+        }
+
+        // Check if the logged-in user is a doctor
+        if ($user && $user->getRoleId() == 2) {
+            $doctor = $this->em->getRepository(Doctor::class)->findOneBy(['userId' => $user]);
+
+            if (!$doctor) {
+                throw $this->createNotFoundException('Doctor profile not found.');
+            }
+            
+            // Create and process the form
+            $form = $this->createForm(DoctorFormType::class, $doctor);
+            $form->handleRequest($request);
+            
+            if ($form->isSubmitted() && $form->isValid()) {
+                $imagePath = $form->get('imagePath')->getData();
+                if ($imagePath) {
+                    $newFileName = uniqid() . '.' . $imagePath->guessExtension();
+                    try {
+                        $imagePath->move(
+                            $this->getParameter('kernel.project_dir') . '/public/uploads',
+                            $newFileName
+                        );
     
+                        $doctor->setImagePath('/uploads/' . $newFileName);
+                    } catch (FileException $e) {
+                        return new Response($e->getMessage());
+                    }
+                }
+    
+                $this->em->flush();
+                // $this->addFlash('success', 'Doctor's profle updated successfully!');
+                return $this->redirectToRoute('user_account');
+            }
+            
+
+            return $this->render('user/doctor/edit.html.twig', [
+                'form' => $form->createView(),
+                'doctor' => $doctor
+            ]);
+        } else {
+            throw $this->createAccessDeniedException('You do not have permission to view this page.');
+        }
+    }
 }
