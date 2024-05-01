@@ -3,12 +3,12 @@
 {% block title %}Page vet {{ doctor.id }}{% endblock %}
 
 {% block body %}
-<div class="section bg-blue-50">
+<div class="section bg-light-grey">
     <div class="container">
         <h2 class="">Here is the page of Dr. id {{ doctor.id }}</h2>
         <p>{{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</p>
         <p>{{ doctor.userId.phone }}</p>
-        <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder_img.jpg') }}" alt="" class="h-[100px] w-[100px]">
+        <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder_veto.png') }}" alt="" class="h-[100px] w-[100px]">
         <p>{{ doctor.address }}</p>
         <p>{{ doctor.clinicName }}</p>
         <p>{{ doctor.cityId.postCode }} - {{ doctor.cityId.cityName }}</p>

@@ -26,6 +26,14 @@
         }
     }
 
+    &.w-full {
+        width: 100%;
+    }
+
+    &.upper {
+        text-transform: uppercase;
+    }
+
     &.button-lg {
         font-size: 14px;
         padding: 12px 18px;

@@ -67,14 +67,14 @@ class UserController extends AbstractController
             }
 
             // dd($animalDetails);
-            return $this->render('user/user.html.twig', [
+            return $this->render('user/owner/user.html.twig', [
                 'user' => $user,
                 'animals' => $animalDetails
             ]);
         } else if ($user->getRoleId() == 2) {
             // Handle users with roleId == 2, e.g., doctors
             $doctor = $this->em->getRepository(Doctor::class)->findOneBy(['userId' => $user]);
-            return $this->render('user/doctor.html.twig', [
+            return $this->render('user/doctor/doctor.html.twig', [
                 'doctor' => $doctor
             ]);
         }
