@@ -125,6 +125,7 @@ class UserController extends AbstractController
                 // $this->addFlash('success', 'Doctor's profle updated successfully!');
                 return $this->redirectToRoute('user_account');
             }
+            
 
             return $this->render('user/doctor/edit.html.twig', [
                 'form' => $form->createView(),

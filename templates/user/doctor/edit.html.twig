@@ -6,7 +6,7 @@
 <div class="section" id="update_doctor">
     <div class="container container-form">
         <div class="flex justify-center mb-10">
-            <h2>Modifier véto</h2>
+            <h3>Modifier informations Dr.{{ app.user.lastName | upper }}</h3>
         </div>
         
         <div class="form-wrapper flex">
@@ -21,7 +21,6 @@
                 {{ form_row(form.experience) }}
                 {{ form_row(form.sex) }}
                 {{ form_row(form.nameSlug) }}
-                {{ form_row(form.userId) }}
                 {{ form_row(form.animalTypes) }}
                 {{ form_row(form.cityId) }}
                 {{ form_row(form.services) }}

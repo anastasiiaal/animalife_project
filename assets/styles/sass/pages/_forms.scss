@@ -36,14 +36,30 @@
             align-self: center;
         }
 
+        &> div {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+            // &> div {
+            //     width: 100%;
+            //     display: flex;
+            //     flex-wrap: wrap;
+            // }
+        }
+
         div:has(input[type=checkbox]) {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
+            width: 100%;
             input[type=checkbox] {
                 height: 15px;
                 width: 15px;
+            }
+            div label {
+                width: calc(50% - 35px); // gap 20 + input width 15
             }
         }
 
