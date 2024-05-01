@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Doctor;
 use App\Entity\PetOwner;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -74,9 +75,18 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // return $this->redirectToRoute('app_login'); // should add redirect to doctor info setup
+            $nameSlug = strtolower($user->getFirstName()) . '-' . strtolower($user->getLastName()) . '-' . ($user->getId() * 7 + 121);
 
-            return $security->login($user, LoginFormAuthenticator::class, 'main');
+            $doctor = new Doctor();
+            $doctor->setUserId($user);
+            $doctor->setNameSlug($nameSlug);
+            $doctor->setIsEmergency(false);
+            $entityManager->persist($doctor);
+            $entityManager->flush();
+
+            // return $this->redirectToRoute('app_login'); // should add redirect to doctor info setup
+            $security->login($user, LoginFormAuthenticator::class, 'main');
+            return $this->redirectToRoute('user_edit');
     
             // return $this->redirectToRoute('user_account');
             // return $this->redirectToRoute('vet_info');

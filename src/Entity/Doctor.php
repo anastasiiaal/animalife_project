@@ -23,7 +23,7 @@ class Doctor
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imagePath = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -45,13 +45,13 @@ class Doctor
     private Collection $consultations;
 
     #[ORM\ManyToOne(inversedBy: 'doctors')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?City $cityId = null;
 
     #[ORM\ManyToMany(targetEntity: Service::class, inversedBy: 'doctors')]
     private Collection $services;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $sex = null;
 
     #[ORM\Column(length: 255)]
