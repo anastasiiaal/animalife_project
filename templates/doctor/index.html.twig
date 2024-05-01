@@ -27,7 +27,14 @@
         <div class="doctor-card__wrapper">
             {% for doctor in doctors %}
                 <a class="doctor-card" href="{{ path('doctor', {'slug': doctor.nameSlug}) }}">
-                    <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder_veto.png') }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
+                    {% if (doctor.imagePath) %}
+                        <img src="{{ doctor.imagePath }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
+                    {% elseif (doctor.sex == "male") %}
+                        <img src="{{ asset('images/placeholder-h.png') }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
+                    {% else %}
+                        <img src="{{ asset('images/placeholder-f.png') }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
+                    {% endif %}
+                    
                     <div class="doctor-card__text">
                         <p class="mb-4 text-xs underline text-slate-500">Lire la fiche</p>
                         <h5 class="mb-4">{{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</h5>
@@ -47,10 +54,6 @@
 
                         <p class="my-3">Prochain rendez-vous : <strong> dès demain </strong></p>
                         <button class="button w-full upper">Prendre rendez-vous</button>
-
-
-                        
-
                     </div>
                 </a>
             {% endfor %}
