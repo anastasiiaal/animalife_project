@@ -53,6 +53,14 @@
             > div {
                 width: calc(50% - 10px);
             }
+
+            @media screen and (max-width: $bp-sm) {
+                flex-direction: column;
+                gap: 0;
+                > div {
+                    width: 100%;
+                }
+            }
         }
 
         div:has(input[type=checkbox]) {
@@ -71,6 +79,10 @@
             }
         }
 
+        div:has(input#registration_form_agreeTerms) {
+            flex-direction: row;
+        }
+
         input[type=text],
         input[type=password],
         input[type=email],
@@ -85,6 +97,10 @@
             border-radius: $radius-md;
             display: block;
             width: 100%;
+        }
+
+        .btn-wrapper {
+            flex-direction: row;
         }
     }
 

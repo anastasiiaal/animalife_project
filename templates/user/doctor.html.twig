@@ -9,7 +9,7 @@
             {% if app.user %}
                 <div class="flex items-center gap-3">
                     <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder.png') }}" class="profile-img" alt="Photo de Dr.{{ app.user.lastName }} {{ app.user.firstName }}">
-                    <h3>Compte de Dr.{{ app.user.lastName }} {{ app.user.firstName }} </h3>
+                    <h3>Compte de Dr.{{ app.user.lastName | upper }} {{ app.user.firstName }} </h3>
                 </div>
                 <div class="btn-wrapper flex gap-2">
                     <a href="{{ path('user_edit') }}" class="button outline">Modifier mon compte</a>
