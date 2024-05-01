@@ -5,11 +5,15 @@
 {% block body %}
 <section class="section">
     <div class="container">
-        <h1>Bonjour {{ app.user.firstName }} {{ app.user.lastName }} ! </h1>
-        <h2>Vous êtes véto</h2>
-        {% if app.user %}
-            <a href="/logout" class="button">Me deconnecter</a>
-        {% endif %}
+         <div class="user-header flex justify-between items-center">
+            <h3>Compte de Dr.{{ app.user.lastName }} {{ app.user.firstName }} </h3>
+            {% if app.user %}
+                <div class="btn-wrapper flex gap-2">
+                    <a href="" class="button outline">Modifier mon compte</a>
+                    <a href="/logout" class="button outline">Me deconnecter</a>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </section>
 {% endblock %}

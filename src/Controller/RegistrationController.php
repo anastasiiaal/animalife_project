@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -53,7 +55,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/doctor/register', name: 'vet_register')]
-    public function vetRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function vetRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, Security $security): Response
     {
         $user = new User();
         $user->setRoleId(2);
@@ -72,7 +74,12 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_login'); // should add redirect to doctor info setup
+            // return $this->redirectToRoute('app_login'); // should add redirect to doctor info setup
+
+            return $security->login($user, LoginFormAuthenticator::class, 'main');
+    
+            // return $this->redirectToRoute('user_account');
+            // return $this->redirectToRoute('vet_info');
         }
 
         return $this->render('registration/vet_register.html.twig', [
