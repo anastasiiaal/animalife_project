@@ -23,20 +23,32 @@ class DoctorFormType extends AbstractType
         $builder
             ->add('imagePath', FileType::class, [
                 'label' => 'Photo de profil',
-                'required' => false,
                 'mapped' => false,
+                'required' => false,
                 'attr' => array(
                     'class' => ''
                 ),
             ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse de votre cabnet ou Clinique',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => '74 avenue des Platanes'
+                ),
             ])
             ->add('clinicName', TextType::class, [
                 'label' => 'Nom de votre clinique',
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Clinique vétérinaire Vétolib'
+                ),
             ])
             ->add('education', TextareaType::class, [
                 'label' => 'Vos diplomes, certificats, etc.',
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => '2015 : Diplôme d\'Auxiliaire Spécialisé Vétérinaire'
+                )
             ])
             ->add('isEmergency', ChoiceType::class, [
                 'label' => "Etes-vous vétérinaire de garde ?",
@@ -48,6 +60,10 @@ class DoctorFormType extends AbstractType
             ])
             ->add('experience', TextareaType::class, [
                 'label' => 'Décrivez vos expériences',
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Détaillez vos expériences professionnelles'
+                )
             ])
             ->add('sex', ChoiceType::class, [
                 'choices' => [
@@ -61,23 +77,27 @@ class DoctorFormType extends AbstractType
                 )
             ])
             ->add('nameSlug', TextType::class, [
-                'disabled' => true
+                'disabled' => true,
+                'label' => 'Votre lien personnalisé',
             ])
             ->add('animalTypes', EntityType::class, [
                 'class' => AnimalType::class,
                 'choice_label' => 'type_name',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'label' => 'Les animaux que vous acceptés en tant que patients',
             ])
             ->add('cityId', EntityType::class, [
                 'class' => City::class,
                 'choice_label' => 'city_name',
+                'label' => 'Ville de votre travail',
             ])
             ->add('services', EntityType::class, [
                 'class' => Service::class,
                 'choice_label' => 'service_name',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'label' => 'Services proposés',
             ])
         ;
     }

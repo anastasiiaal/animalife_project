@@ -8,7 +8,7 @@
          <div class="user-header flex justify-between items-center flex-wrap gap-5">
             {% if app.user %}
                 <div class="flex items-center gap-3">
-                    <img src="{{ asset('images/placeholder.png') }}" class="profile-img" alt="Photo de Dr.{{ app.user.lastName }} {{ app.user.firstName }}">
+                    <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder.png') }}" class="profile-img" alt="Photo de Dr.{{ app.user.lastName }} {{ app.user.firstName }}">
                     <h3>Compte de Dr.{{ app.user.lastName }} {{ app.user.firstName }} </h3>
                 </div>
                 <div class="btn-wrapper flex gap-2">

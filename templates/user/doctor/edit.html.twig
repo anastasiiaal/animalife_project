@@ -14,15 +14,17 @@
             {{ form_start(form) }}
 
                 {{ form_row(form.imagePath) }}
-                {{ form_row(form.address) }}
                 {{ form_row(form.clinicName) }}
+                {{ form_row(form.address) }}
+                <div class="two-cols">
+                    {{ form_row(form.cityId) }}
+                    {{ form_row(form.isEmergency) }}
+                </div>
                 {{ form_row(form.education) }}
-                {{ form_row(form.isEmergency) }}
                 {{ form_row(form.experience) }}
                 {{ form_row(form.sex) }}
                 {{ form_row(form.nameSlug) }}
                 {{ form_row(form.animalTypes) }}
-                {{ form_row(form.cityId) }}
                 {{ form_row(form.services) }}
                 <button class="button" type="submit">
                     Sauvegarder
