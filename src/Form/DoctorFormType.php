@@ -82,6 +82,7 @@ class DoctorFormType extends AbstractType
             ])
             ->add('animalTypes', EntityType::class, [
                 'class' => AnimalType::class,
+                'required' => true,
                 'choice_label' => 'type_name',
                 'multiple' => true,
                 'expanded' => true,
@@ -91,6 +92,7 @@ class DoctorFormType extends AbstractType
                 'class' => City::class,
                 'choice_label' => 'city_name',
                 'label' => 'Ville de votre travail',
+                'required' => true,
             ])
             ->add('services', EntityType::class, [
                 'class' => Service::class,
@@ -98,6 +100,7 @@ class DoctorFormType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Services proposés',
+                'required' => true,
             ])
         ;
     }
