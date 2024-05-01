@@ -32,10 +32,15 @@
 
     &.upper {
         text-transform: uppercase;
+        padding-top: 11px;
     }
 
     &.button-lg {
         font-size: 14px;
         padding: 12px 18px;
+
+        &.upper {
+            padding-top: 13px;
+        }
     }
 }

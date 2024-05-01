@@ -6,6 +6,7 @@ use App\Entity\Doctor;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -18,18 +19,34 @@ class DoctorController extends AbstractController
     }
 
     #[Route('/doctors', name: 'doctors', methods: ['GET'])]
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        // $doctors = $repository->findAll();
-        $query = $this->em->createQueryBuilder()
-            ->select('doctor', 'user', 'city')
+        $queryBuilder = $this->em->createQueryBuilder()
+            ->select('doctor', 'user', 'city', 'animal_types')
             ->from('App\Entity\Doctor', 'doctor')
             ->leftJoin('doctor.userId', 'user')
             ->leftJoin('doctor.cityId', 'city')
-            ->getQuery();
+            ->leftJoin('doctor.animalTypes', 'animal_types');
 
-        $doctors = $query->getResult();
-        // dd($doctors);
+        $establishment = $request->query->get('establishment');
+        if ($establishment) {
+            $queryBuilder->andWhere('user.firstName LIKE :establishment OR user.lastName LIKE :establishment')
+                        ->setParameter('establishment', '%' . $establishment . '%');
+        }
+
+        $animal = $request->query->get('animal');
+        if ($animal) {
+            $queryBuilder->andWhere('animal_types.typeName LIKE :animal')
+                        ->setParameter('animal', '%' . $animal . '%');
+        }
+
+        $location = $request->query->get('location');
+        if ($location) {
+            $queryBuilder->andWhere('city.cityName LIKE :location OR city.postcode LIKE :location')
+                        ->setParameter('location', '%' . $location . '%');
+        }
+
+        $doctors = $queryBuilder->getQuery()->getResult();
 
         return $this->render('doctor/index.html.twig', [
             'doctors' => $doctors,
