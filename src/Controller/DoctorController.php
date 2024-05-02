@@ -28,22 +28,22 @@ class DoctorController extends AbstractController
             ->leftJoin('doctor.cityId', 'city')
             ->leftJoin('doctor.animalTypes', 'animal_types');
 
-        $establishment = $request->query->get('establishment');
-        if ($establishment) {
-            $queryBuilder->andWhere('user.firstName LIKE :establishment OR user.lastName LIKE :establishment')
-                        ->setParameter('establishment', '%' . $establishment . '%');
+        $name = $request->query->get('name');
+        if ($name) {
+            $queryBuilder->andWhere('user.firstName LIKE :name OR user.lastName LIKE :name OR doctor.clinicName LIKE :name')
+                         ->setParameter('name', '%' . $name . '%');
         }
 
         $animal = $request->query->get('animal');
         if ($animal) {
             $queryBuilder->andWhere('animal_types.typeName LIKE :animal')
-                        ->setParameter('animal', '%' . $animal . '%');
+                         ->setParameter('animal', '%' . $animal . '%');
         }
 
         $location = $request->query->get('location');
         if ($location) {
             $queryBuilder->andWhere('city.cityName LIKE :location OR city.postcode LIKE :location')
-                        ->setParameter('location', '%' . $location . '%');
+                         ->setParameter('location', '%' . $location . '%');
         }
 
         $doctors = $queryBuilder->getQuery()->getResult();

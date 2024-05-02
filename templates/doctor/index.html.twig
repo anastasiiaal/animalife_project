@@ -10,15 +10,15 @@
             <div class="input-group">
                 <div class="input-wrapper">
                     <img src="{{ asset('images/search.svg') }}" alt="Loope">
-                    <input type="text" name="establishment" placeholder="Nom, établissement" class="input-field first"/>
+                    <input type="text" name="name" placeholder="Nom, établissement" class="input-field first" value="{{ app.request.query.get('name') }}" />
                 </div>
                 <div class="input-wrapper">
                     <img src="{{ asset('images/animal.svg') }}" alt="Animal">
-                    <input type="text" name="animal" placeholder="Type d'animal" class="input-field"/>
+                    <input type="text" name="animal" placeholder="Type d'animal" class="input-field" value="{{ app.request.query.get('animal') }}"/>
                 </div>
                 <div class="input-wrapper">
                     <img src="{{ asset('images/location.svg') }}" alt="Ville">
-                    <input type="text" name="location" placeholder="Ville" class="input-field"/>
+                    <input type="text" name="location" placeholder="Ville" class="input-field" value="{{ app.request.query.get('location') }}" />
                 </div>
                 <button type="submit" class="search-button">Rechercher</button>
             </div>
