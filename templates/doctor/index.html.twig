@@ -6,57 +6,69 @@
 <div class="section">
     <div class="container">
         <h2 class="text-center mb-6">Catalogue veterinaires</h2>
-        <form action="" method="get" class="search-bar">
+        <form action="{{ path('doctors') }}" method="get" class="search-bar">
             <div class="input-group">
                 <div class="input-wrapper">
                     <img src="{{ asset('images/search.svg') }}" alt="Loope">
-                    <input type="text" name="establishment" placeholder="Nom, établissement" class="input-field first"/>
+                    <input type="text" name="name" placeholder="Nom, établissement" class="input-field first" value="{{ app.request.query.get('name') }}" />
                 </div>
                 <div class="input-wrapper">
                     <img src="{{ asset('images/animal.svg') }}" alt="Animal">
-                    <input type="text" name="animal" placeholder="Type d'animal" class="input-field"/>
+                    <input type="text" name="animal" placeholder="Type d'animal" class="input-field" value="{{ app.request.query.get('animal') }}"/>
                 </div>
                 <div class="input-wrapper">
                     <img src="{{ asset('images/location.svg') }}" alt="Ville">
-                    <input type="text" name="location" placeholder="Ville" class="input-field"/>
+                    <input type="text" name="location" placeholder="Ville" class="input-field" value="{{ app.request.query.get('location') }}" />
                 </div>
                 <button type="submit" class="search-button">Rechercher</button>
             </div>
         </form>
 
-        <div class="doctor-card__wrapper">
-            {% for doctor in doctors %}
-                <a class="doctor-card" href="{{ path('doctor', {'slug': doctor.nameSlug}) }}">
-                    {% if (doctor.imagePath) %}
-                        <img src="{{ doctor.imagePath }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
-                    {% elseif (doctor.sex == "male") %}
-                        <img src="{{ asset('images/placeholder-h.png') }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
-                    {% else %}
-                        <img src="{{ asset('images/placeholder-f.png') }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
-                    {% endif %}
-                    
-                    <div class="doctor-card__text">
-                        <p class="mb-4 text-xs underline text-slate-500">Lire la fiche</p>
-                        <h5 class="mb-4">{{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</h5>
-                        <div class="p-wrapper">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 8.83605C11.563 8.83605 11.1359 8.96773 10.7726 9.21444C10.4093 9.46115 10.1261 9.8118 9.95887 10.2221C9.79165 10.6323 9.7479 11.0838 9.83315 11.5193C9.9184 11.9548 10.1288 12.3549 10.4378 12.6689C10.7468 12.9829 11.1404 13.1967 11.569 13.2833C11.9975 13.37 12.4418 13.3255 12.8455 13.1556C13.2492 12.9856 13.5942 12.6979 13.837 12.3286C14.0797 11.9594 14.2093 11.5253 14.2093 11.0813C14.2093 10.4858 13.9765 9.91472 13.5622 9.49366C13.1479 9.0726 12.5859 8.83605 12 8.83605ZM12 12.6175C11.701 12.6175 11.4088 12.5274 11.1602 12.3586C10.9116 12.1898 10.7178 11.9498 10.6034 11.6691C10.489 11.3884 10.4591 11.0796 10.5174 10.7816C10.5757 10.4836 10.7197 10.2098 10.9311 9.99501C11.1425 9.78017 11.4119 9.63386 11.7051 9.57458C11.9983 9.51531 12.3023 9.54573 12.5785 9.662C12.8547 9.77827 13.0908 9.97517 13.2569 10.2278C13.423 10.4804 13.5116 10.7774 13.5116 11.0813C13.5116 11.4887 13.3524 11.8794 13.0689 12.1675C12.7854 12.4556 12.4009 12.6175 12 12.6175ZM12 6C10.6744 6.00156 9.40351 6.53741 8.46617 7.48999C7.52882 8.44258 7.00154 9.73411 7 11.0813C7 12.9076 7.83372 14.8473 9.41105 16.6907C10.123 17.5269 10.9242 18.2799 11.8 18.9359C11.8586 18.9776 11.9284 19 12 19C12.0716 19 12.1414 18.9776 12.2 18.9359C13.0758 18.2799 13.877 17.5269 14.589 16.6907C16.1663 14.8473 17 12.9093 17 11.0813C16.9985 9.73411 16.4712 8.44258 15.5338 7.48999C14.5965 6.53741 13.3256 6.00156 12 6ZM12 18.2015C11.1279 17.5173 7.69767 14.6039 7.69767 11.0813C7.69767 9.92167 8.15095 8.80957 8.9578 7.98962C9.76464 7.16966 10.859 6.70901 12 6.70901C13.141 6.70901 14.2354 7.16966 15.0422 7.98962C15.849 8.80957 16.3023 9.92167 16.3023 11.0813C16.3023 14.6039 12.8721 17.5173 12 18.2015Z" fill="#3D606F"/>
-                            </svg>
-                            <p>{{ doctor.address }}, {{ doctor.cityId.postcode }} {{ doctor.cityId.cityName }}</p>
-                        </div>
-
-                        <div class="p-wrapper">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 10.75H13.8355M7 13.25H13.8355M15.8859 7.67875C15.1518 7.24219 14.2773 7.00537 13.3793 7C10.6114 7 8.36694 9.23875 8.36694 12C8.36694 14.7613 10.6114 17 13.3793 17C14.2772 16.9954 15.1519 16.759 15.8859 16.3225" stroke="#3D606F" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <p>Consultation à partir de 70 €</p>
-                        </div>
-
-                        <p class="my-3">Prochain rendez-vous : <strong> dès demain </strong></p>
-                        <button class="button w-full upper">Prendre rendez-vous</button>
-                    </div>
-                </a>
+        <div id="params">
+            {% for name, value in app.request.query.all %}
+                {% if value %}
+                    <div class="param" data-param="{{ name }}">{{ value }} <span>&times;</span></div>
+                {% endif %}
             {% endfor %}
+        </div>
+
+        <div class="doctor-card__wrapper">
+            {% if doctors|length > 0 %}
+                {% for doctor in doctors %}
+                    <a class="doctor-card" href="{{ path('doctor', {'slug': doctor.nameSlug}) }}">
+                        {% if (doctor.imagePath) %}
+                            <img src="{{ doctor.imagePath }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
+                        {% elseif (doctor.sex == "male") %}
+                            <img src="{{ asset('images/placeholder-h.png') }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
+                        {% else %}
+                            <img src="{{ asset('images/placeholder-f.png') }}" alt="Photo de Dr. {{ doctor.userId.lastName | upper }}">
+                        {% endif %}
+                        
+                        <div class="doctor-card__text">
+                            <p class="fiche mb-4 text-xs underline text-slate-500">Lire la fiche</p>
+                            <h5 class="mb-4">{{ doctor.userId.firstName }} {{ doctor.userId.lastName | upper }}</h5>
+                            <div class="p-wrapper">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 8.83605C11.563 8.83605 11.1359 8.96773 10.7726 9.21444C10.4093 9.46115 10.1261 9.8118 9.95887 10.2221C9.79165 10.6323 9.7479 11.0838 9.83315 11.5193C9.9184 11.9548 10.1288 12.3549 10.4378 12.6689C10.7468 12.9829 11.1404 13.1967 11.569 13.2833C11.9975 13.37 12.4418 13.3255 12.8455 13.1556C13.2492 12.9856 13.5942 12.6979 13.837 12.3286C14.0797 11.9594 14.2093 11.5253 14.2093 11.0813C14.2093 10.4858 13.9765 9.91472 13.5622 9.49366C13.1479 9.0726 12.5859 8.83605 12 8.83605ZM12 12.6175C11.701 12.6175 11.4088 12.5274 11.1602 12.3586C10.9116 12.1898 10.7178 11.9498 10.6034 11.6691C10.489 11.3884 10.4591 11.0796 10.5174 10.7816C10.5757 10.4836 10.7197 10.2098 10.9311 9.99501C11.1425 9.78017 11.4119 9.63386 11.7051 9.57458C11.9983 9.51531 12.3023 9.54573 12.5785 9.662C12.8547 9.77827 13.0908 9.97517 13.2569 10.2278C13.423 10.4804 13.5116 10.7774 13.5116 11.0813C13.5116 11.4887 13.3524 11.8794 13.0689 12.1675C12.7854 12.4556 12.4009 12.6175 12 12.6175ZM12 6C10.6744 6.00156 9.40351 6.53741 8.46617 7.48999C7.52882 8.44258 7.00154 9.73411 7 11.0813C7 12.9076 7.83372 14.8473 9.41105 16.6907C10.123 17.5269 10.9242 18.2799 11.8 18.9359C11.8586 18.9776 11.9284 19 12 19C12.0716 19 12.1414 18.9776 12.2 18.9359C13.0758 18.2799 13.877 17.5269 14.589 16.6907C16.1663 14.8473 17 12.9093 17 11.0813C16.9985 9.73411 16.4712 8.44258 15.5338 7.48999C14.5965 6.53741 13.3256 6.00156 12 6ZM12 18.2015C11.1279 17.5173 7.69767 14.6039 7.69767 11.0813C7.69767 9.92167 8.15095 8.80957 8.9578 7.98962C9.76464 7.16966 10.859 6.70901 12 6.70901C13.141 6.70901 14.2354 7.16966 15.0422 7.98962C15.849 8.80957 16.3023 9.92167 16.3023 11.0813C16.3023 14.6039 12.8721 17.5173 12 18.2015Z" fill="#3D606F"/>
+                                </svg>
+                                <p>{{ doctor.address }}, {{ doctor.cityId.postcode }} {{ doctor.cityId.cityName }}</p>
+                            </div>
+
+                            <div class="p-wrapper">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10.75H13.8355M7 13.25H13.8355M15.8859 7.67875C15.1518 7.24219 14.2773 7.00537 13.3793 7C10.6114 7 8.36694 9.23875 8.36694 12C8.36694 14.7613 10.6114 17 13.3793 17C14.2772 16.9954 15.1519 16.759 15.8859 16.3225" stroke="#3D606F" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <p>Consultation à partir de 70 €</p>
+                            </div>
+
+                            <p class="my-3">Prochain rendez-vous : <strong> dès demain </strong></p>
+                            <button class="button w-full upper">Prendre rendez-vous</button>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <h4 class="text-center w-full mt-6">Aucun vétérinaire trouvé 😟</h4>
+            {% endif %}
         </div>
     </div>
 </div>

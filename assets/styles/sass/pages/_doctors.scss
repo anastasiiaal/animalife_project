@@ -36,6 +36,10 @@
         @media screen and (max-width: $bp-lg) {
             width: 100%;
 
+            img {
+                width: 220px;
+            }
+
             button {
                 max-width: 300px;
             }
@@ -48,6 +52,36 @@
             &__text {
                 padding: 20px 20px 25px 20px;
             }
+
+            button {
+                letter-spacing: normal;
+            }
+
+            p.fiche {
+                display: none;
+            }
+        }
+    }
+}
+
+#params {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    .param {
+        padding: 6px 16px 8px 18px;
+        border-radius: $radius-xl;
+        background-color: $dark-blue;
+        color: $white;
+        display: inline-block;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        span {
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 18px;
+            margin-top: 1px;
         }
     }
 }
