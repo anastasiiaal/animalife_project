@@ -24,6 +24,14 @@
             </div>
         </form>
 
+        <div id="params">
+            {% for name, value in app.request.query.all %}
+                {% if value %}
+                    <div class="param" data-param="{{ name }}">{{ value }} <span>&times;</span></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
         <div class="doctor-card__wrapper">
             {% if doctors|length > 0 %}
                 {% for doctor in doctors %}

@@ -51,3 +51,25 @@
         }
     }
 }
+
+#params {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    .param {
+        padding: 6px 16px 8px 18px;
+        border-radius: $radius-xl;
+        background-color: $dark-blue;
+        color: $white;
+        display: inline-block;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        span {
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 18px;
+            margin-top: 1px;
+        }
+    }
+}
