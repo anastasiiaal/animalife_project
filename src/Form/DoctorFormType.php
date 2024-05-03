@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -101,6 +102,34 @@ class DoctorFormType extends AbstractType
                 'expanded' => true,
                 'label' => 'Services proposés',
                 'required' => true,
+            ])
+            ->add('consultationPrice', NumberType::class, [
+                'label' => 'Prix de la consultation',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'Le prix minimal de la consultation en €, e.g. 25'
+                )
+            ])
+            ->add('numAdeli', NumberType::class, [
+                'label' => 'Numéro ADELI',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'e.g. 123456789'
+                )
+            ])
+            ->add('numRpps', NumberType::class, [
+                'label' => 'Numéro RPPS',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'e.g. 10123456789'
+                )
+            ])
+            ->add('speciality', TextType::class, [
+                'label' => 'Votre specialité',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'e.g. Vétérinaire équin, Vétérinaire pour animaux de ferme, etc.'
+                ),
             ])
         ;
     }
