@@ -66,6 +66,9 @@ class Doctor
     #[ORM\Column(nullable: true)]
     private ?int $consultationPrice = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $speciality = null;
+
     public function __construct()
     {
         $this->animalTypes = new ArrayCollection();
@@ -308,6 +311,18 @@ class Doctor
     public function setConsultationPrice(?int $consultationPrice): static
     {
         $this->consultationPrice = $consultationPrice;
+
+        return $this;
+    }
+
+    public function getSpeciality(): ?string
+    {
+        return $this->speciality;
+    }
+
+    public function setSpeciality(?string $speciality): static
+    {
+        $this->speciality = $speciality;
 
         return $this;
     }

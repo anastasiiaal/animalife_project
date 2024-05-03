@@ -14,21 +14,28 @@
             {{ form_start(form) }}
 
                 {{ form_row(form.imagePath) }}
-                {{ form_row(form.clinicName) }}
-                {{ form_row(form.address) }}
+                <div class="two-cols">
+                    {{ form_row(form.clinicName) }}
+                    {{ form_row(form.address) }}
+                </div>                
                 <div class="two-cols">
                     {{ form_row(form.cityId) }}
                     {{ form_row(form.isEmergency) }}
                 </div>
                 <div class="two-cols">
+                    {{ form_row(form.speciality) }}
+                    {{ form_row(form.consultationPrice) }}
+                </div>
+                <div class="two-cols">
                     {{ form_row(form.numRpps) }}
                     {{ form_row(form.numAdeli) }}
                 </div>
-                    {{ form_row(form.consultationPrice) }}
                 {{ form_row(form.education) }}
                 {{ form_row(form.experience) }}
-                {{ form_row(form.sex) }}
-                {{ form_row(form.nameSlug) }}
+                <div class="two-cols">
+                    {{ form_row(form.sex) }}
+                    {{ form_row(form.nameSlug) }}
+                </div>
                 {{ form_row(form.animalTypes) }}
                 {{ form_row(form.services) }}
                 <button class="button" type="submit">

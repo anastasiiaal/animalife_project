@@ -124,6 +124,13 @@ class DoctorFormType extends AbstractType
                     'placeholder' => 'e.g. 10123456789'
                 )
             ])
+            ->add('speciality', TextType::class, [
+                'label' => 'Votre specialité',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'e.g. Vétérinaire équin, Vétérinaire pour animaux de ferme, etc.'
+                ),
+            ])
         ;
     }
 
