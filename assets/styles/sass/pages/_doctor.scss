@@ -1,6 +1,10 @@
 #doctor_single {
     .container > div {
         margin-bottom: 30px;
+
+        @media screen and (max-width: $bp-md) {
+            margin-bottom: 20px;
+        }
     }
     .wrapper-main {
         display: flex;
@@ -63,6 +67,50 @@
         margin-top: 4px;
     }
 
+    .mobile {
+        display: none;
+    }
+
+    @media screen and (max-width: $bp-lg) {
+        .wrapper-main {
+            .wrapper-resume {
+                display: none;
+            }
+
+            .button.mobile {
+                display: block;
+            }
+
+            p.desktop {
+                display: none;
+            }
+
+            img {
+                height: 150px;
+                width: 150px;
+            }
+        }
+    }
+
+    @media screen and (max-width: $bp-md) {
+        .cols {
+            flex-direction: column;
+
+            .wrapper {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    @media screen and (max-width: $bp-sm) {
+        .wrapper-main {
+            img {
+                height: 100px;
+                width: 100px;
+            }
+        }
+    }
 }
 
 

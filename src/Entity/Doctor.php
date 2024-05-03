@@ -57,6 +57,18 @@ class Doctor
     #[ORM\Column(length: 255)]
     private ?string $nameSlug = null;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $numRpps = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $numAdeli = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $consultationPrice = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $speciality = null;
+
     public function __construct()
     {
         $this->animalTypes = new ArrayCollection();
@@ -263,6 +275,54 @@ class Doctor
     public function setNameSlug(string $nameSlug): static
     {
         $this->nameSlug = $nameSlug;
+
+        return $this;
+    }
+
+    public function getNumRpps(): ?string
+    {
+        return $this->numRpps;
+    }
+
+    public function setNumRpps(?string $numRpps): static
+    {
+        $this->numRpps = $numRpps;
+
+        return $this;
+    }
+
+    public function getNumAdeli(): ?string
+    {
+        return $this->numAdeli;
+    }
+
+    public function setNumAdeli(?string $numAdeli): static
+    {
+        $this->numAdeli = $numAdeli;
+
+        return $this;
+    }
+
+    public function getConsultationPrice(): ?int
+    {
+        return $this->consultationPrice;
+    }
+
+    public function setConsultationPrice(?int $consultationPrice): static
+    {
+        $this->consultationPrice = $consultationPrice;
+
+        return $this;
+    }
+
+    public function getSpeciality(): ?string
+    {
+        return $this->speciality;
+    }
+
+    public function setSpeciality(?string $speciality): static
+    {
+        $this->speciality = $speciality;
 
         return $this;
     }
