@@ -5,7 +5,7 @@
 {% block body %}
 <section class="section" id="doctor_account">
     <div class="container">
-         <div class="user-header flex justify-between items-center flex-wrap gap-5">
+        <div class="user-header flex justify-between items-center flex-wrap gap-5">
             {% if app.user %}
                 <div class="flex items-center gap-3">
                     <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder.png') }}" class="profile-img" alt="Photo de Dr.{{ app.user.lastName }} {{ app.user.firstName }}">
@@ -17,6 +17,26 @@
                 </div>
             {% endif %}
         </div>
+    </div>
+
+    <div class="container">
+        <h3>Les à venir</h3>
+
+    </div>
+
+    <div class="container">
+    <h3>Les consultations passées</h3>
+        {# {% if consultations|length > 0 %}
+            <ul>
+                {% for consultation in consultations %}
+                    <li>
+                        
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No consultations found.</p>
+        {% endif %} #}
     </div>
 </section>
 {% endblock %}

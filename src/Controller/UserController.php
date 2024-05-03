@@ -74,8 +74,16 @@ class UserController extends AbstractController
         } else if ($user->getRoleId() == 2) {
             // Handle users with roleId == 2, e.g., doctors
             $doctor = $this->em->getRepository(Doctor::class)->findOneBy(['userId' => $user]);
+            if (!$doctor) {
+                return $this->redirectToRoute('login');
+            }
+
+            // $consultations = $this->em->createQueryBuilder()
+                
+
             return $this->render('user/doctor/doctor.html.twig', [
-                'doctor' => $doctor
+                'doctor' => $doctor,
+                // 'consultations' => $consultations
             ]);
         }
 
