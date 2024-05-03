@@ -72,4 +72,44 @@
         object-fit: cover;
         border-radius: 100%;
     }
+
+
+    .consultations-wrapper {
+        margin: 40px 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 2%;
+
+        h4 {
+            color: $grey;
+        }
+
+        .consultation-card {
+            padding: 20px;
+            box-shadow: $shadow-md;
+            background-color: $white;
+            border-radius: $radius-lg;
+            width: 32%;
+            margin-bottom: 20px;
+            position: relative;
+
+            p {
+                margin-bottom: 10px;
+            }
+
+            &:hover {
+                box-shadow: $shadow-xl;
+            }
+
+            @media screen and (max-width: $bp-lg) {
+                width: 49%;
+            }
+
+            @media screen and (max-width: $bp-md) {
+                width: 100%;
+            }
+        }
+    }
 }

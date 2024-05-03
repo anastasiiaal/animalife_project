@@ -78,12 +78,22 @@ class UserController extends AbstractController
                 return $this->redirectToRoute('login');
             }
 
-            // $consultations = $this->em->createQueryBuilder()
+            $consultations = $this->em->createQueryBuilder()
+                ->select('c', 'a', 'v', 't')
+                ->from('App\Entity\Consultation', 'c')
+                ->leftJoin('c.animalId', 'a')
+                ->leftJoin('a.typeId', 't')
+                ->leftJoin('c.vaccinations', 'v')
+                ->where('c.doctorId = :doctor')
+                ->setParameter('doctor', $doctor)
+                ->orderBy('c.date', 'DESC')
+                ->getQuery()
+                ->getResult();
                 
-
+                
             return $this->render('user/doctor/doctor.html.twig', [
                 'doctor' => $doctor,
-                // 'consultations' => $consultations
+                'consultations' => $consultations
             ]);
         }
 

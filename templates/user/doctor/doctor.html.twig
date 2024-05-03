@@ -8,8 +8,14 @@
         <div class="user-header flex justify-between items-center flex-wrap gap-5">
             {% if app.user %}
                 <div class="flex items-center gap-3">
-                    <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder.png') }}" class="profile-img" alt="Photo de Dr.{{ app.user.lastName }} {{ app.user.firstName }}">
-                    <h3>Compte de Dr.{{ app.user.lastName | upper }} {{ app.user.firstName }} </h3>
+                    {% set currentHour = "now"|date("G") %}
+                    {% set greeting = currentHour < 17 ? 'Bonjour' : 'Bonsoir' %}
+
+                    <img src="{{ doctor.imagePath ? doctor.imagePath : asset('images/placeholder.png') }}" class="profile-img" alt="Photo de Dr. {{ app.user.lastName }} {{ app.user.firstName }}">
+                    <div>
+                        <h3>{{ greeting }}, {{ app.user.firstName }} {{ app.user.lastName | upper }} </h3>
+                        <p class="mt-2">{{ "now"|date("l, d F Y") }}</p>
+                    </div>
                 </div>
                 <div class="btn-wrapper flex gap-2">
                     <a href="{{ path('user_edit') }}" class="button outline">Modifier mon compte</a>
@@ -17,26 +23,62 @@
                 </div>
             {% endif %}
         </div>
-    </div>
+    
 
-    <div class="container">
-        <h3>Les à venir</h3>
+        <div class="section">
+            <h3>Les consultations à venir</h3>
+            <div class="consultations-wrapper">
+                <h4>Aucune consultation à venir</h4>
+            </div>
+        </div>
 
-    </div>
-
-    <div class="container">
-    <h3>Les consultations passées</h3>
-        {# {% if consultations|length > 0 %}
-            <ul>
-                {% for consultation in consultations %}
-                    <li>
-                        
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No consultations found.</p>
-        {% endif %} #}
+        <div class="section">
+            <h3>Les consultations passées</h3>
+            <div class="consultations-wrapper">
+                {% if consultations|length > 0 %}
+                    {% for consultation in consultations %}
+                        <div class="consultation-card">
+                            <p class="text-right">
+                                {{ consultation.date|date('d/m/Y, h:m') }}
+                            </p>
+                            <p>
+                                Patient : <strong>{{ consultation.animalId.name }}</strong>, {{ consultation.animalId.typeId.typeName }}
+                            </p>
+                            <p>
+                                Raison : {{ consultation.reason }}
+                            </p>
+                            {# <p>
+                                Summary: {{ consultation.resume }}
+                            </p>
+                            <p>
+                                Next Visit: {% if consultation.nextVisit %}{{ consultation.nextVisit|date('Y-m-d') }}{% endif %}
+                            </p>
+                            <p>
+                                Weight at Visit: {{ consultation.animalWeight }} kg
+                            </p>
+                            <p>
+                            </p>
+                                {% if consultation.document %}
+                                    Document: <a href="{{ asset('path/to/documents/' ~ consultation.document) }}">Download</a>
+                                {% endif %}
+                                <!-- Display vaccination details if any -->
+                                {% if consultation.vaccinations|length %}
+                                    Vaccinations:
+                                    <ul>
+                                        {% for vaccination in consultation.vaccinations %}
+                                            <li>{{ vaccination.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %} #}
+                            <a href="" class="button outline mt-3">En savoir plus</a>
+                        </div>
+                    {% endfor %}
+                
+                {% else %}
+                    <p>Aucune consultation passée</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
