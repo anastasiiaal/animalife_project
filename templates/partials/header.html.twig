@@ -7,6 +7,19 @@
                     AnimaLife
                 </a>
                 <ul class="nav">
+                {% if app.user and app.user.roleId == 2 %}
+                    {# header for connected doctors #}
+                    <li>
+                        <a class="{{ app.request.attributes.get('_route') == 'home' ? 'active' : '' }}" href="{{ path('home') }}">Accueil</a>
+                    </li>
+                    <li>
+                        <a class="{{ app.request.attributes.get('_route') == 'user_account' ? 'active' : '' }}" href="{{ path('user_account') }}">Mes consultations</a>
+                    </li>
+                    <li>
+                        <a class="{{ app.request.attributes.get('_route') == 'user_edit' ? 'active' : '' }}" href="{{ path('user_edit') }}">Mes reglages</a>
+                    </li>
+                {% else %}
+                    {# header for connected & non-connected users #}
                     <li>
                         <a class="{{ app.request.attributes.get('_route') == 'home' ? 'active' : '' }}" href="{{ path('home') }}">Accueil</a>
                     </li>
@@ -19,15 +32,21 @@
                     <li>
                         <a href="{{ path('doctors') }}" class="urgency">Urgence</a>
                     </li>
+                {% endif %}
                 </ul>
                 <div class="flex gap-2">
-                {# {% if app.user and app.user.roleId == 1 %} #}
+                
                 {% if app.user %}
                     <a href="{{ path('user_account') }}" class="button">Mon compte</a>
                 {% else %}
                     <a href="{{ path('app_login') }}" class="button">Se connecter</a>
                 {% endif %}
+
+                {% if app.user and app.user.roleId == 2 %}
+                    <a href="/logout" class="button outline">Me deconnecter</a>
+                {% else %}
                     <a href="{{ path('vet_register') }}" class="button outline">Vous êtes vétérinaire ?</a>
+                {% endif %}
                 </div>
             </nav>
         </div>
