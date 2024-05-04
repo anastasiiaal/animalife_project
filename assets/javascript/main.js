@@ -10,3 +10,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+document.getElementById('burger').addEventListener('click', function() {
+    const navWrapper = document.getElementById('nav-wrapper');
+
+    if (this.classList.contains('open')) {
+        this.classList.remove('open');
+        navWrapper.classList.add('closed');
+    } else {
+        this.classList.add('open');
+        navWrapper.classList.remove('closed');
+    }
+});

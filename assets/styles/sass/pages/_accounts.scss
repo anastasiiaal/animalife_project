@@ -4,6 +4,7 @@
 
         .animal-card {
             @extend %card;
+            padding-top: 55px;
             display: flex;
             flex-wrap: wrap;
             gap: 20px;

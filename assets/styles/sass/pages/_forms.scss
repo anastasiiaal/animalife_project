@@ -171,7 +171,6 @@
                 color: white;
                 border-color: $dark-blue; 
             }
-          
     
             label:hover {
                 background-color: $dark-blue;
@@ -183,5 +182,21 @@
 
     form[name=doctor_form] {
         width: 100%;
+    }
+}
+
+#login, 
+#register {
+    @media screen and (max-width: $bp-sm) {
+        .form-wrapper {
+            form {
+                width: 100%;
+
+            }
+
+            .img-wrapper {
+                display: none;
+            }
+        }
     }
 }
