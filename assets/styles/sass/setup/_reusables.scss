@@ -1,0 +1,26 @@
+%card-wrapper {
+    margin: 40px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2%;
+}
+
+%card {
+    padding: 20px;
+    box-shadow: $shadow-md;
+    background-color: $white;
+    border-radius: $radius-lg;
+    width: 32%;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: $bp-lg) {
+        width: 49%;
+    }
+
+    @media screen and (max-width: $bp-md) {
+        width: 100%;
+    }
+}
+

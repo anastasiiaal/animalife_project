@@ -48,7 +48,7 @@ class DoctorController extends AbstractController
 
         $doctors = $queryBuilder->getQuery()->getResult();
 
-        return $this->render('doctor/index.html.twig', [
+        return $this->render('doctor/list.html.twig', [
             'doctors' => $doctors,
         ]);
     }

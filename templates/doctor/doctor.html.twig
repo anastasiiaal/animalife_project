@@ -16,7 +16,7 @@
 
             <div class="text">
                 <h3 class="mb-2">Dr {{ doctor.userId.lastName }} {{ doctor.userId.firstName }}</h3>
-                <p>Médécin vétérinaire</p>
+                <p>{{ doctor.speciality ? doctor.speciality : 'Médécin vétérinaire' }}</p>
                 {% if doctor.isEmergency %}
                     <p class="garde">Vétérinaire de garde</p>
                 {% endif %}
