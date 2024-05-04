@@ -112,7 +112,26 @@
             </div>
 
             <div class="wrapper wrapper-address">
-                <h5 class="mb-5">Adresse</h5>
+                <div class="text-wrapper">
+                    <h5 class="mb-5">Adresse</h5>
+                    <p class="mb-2"><strong>Adresse</strong></p>
+                    {% if doctor.clinicName %}
+                        <p class="mb-2">{{ doctor.clinicName }}</p>
+                    {% endif %}
+                    <p class="mb-5">{{ doctor.address }}, {{ doctor.cityId.postcode }} {{ doctor.cityId.cityName }}</p>
+
+                    <p class="mb-2"><strong>Moyens de transports</strong></p>
+                    <p class="mb-2">Bus - Arcades (lignes 2, 5, 8)</p>
+                    <p class="mb-5">Tram - Arcades (ligne 10)</p>
+
+                    <p class="mb-2"><strong>Parking</strong></p>
+                    <p class="mb-2">Parking payant</p>
+
+                </div>
+                <div class="img-wrapper">
+                    <p>J'autorise le traitement d'informations (dont mon adresse IP) et leur transfert afin d’afficher la carte.</p>
+                    <button class="button">Afficher la carte</button>
+                </div>
             </div>
         </div>    
     </div>
