@@ -8,6 +8,8 @@ header.header {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 15%;
+        position: relative;
         a.logo {
             display: flex;
             align-items: center;
@@ -43,9 +45,45 @@ header.header {
                 }
             }
 
-            @media screen and (max-width: $bp-lg) {
-                display: none;
+            // @media screen and (max-width: $bp-lg) {
+            //     display: none;
+            // }
+        }
+
+        .burger {
+            display: none;
+        }
+
+        @media screen and (max-width: $bp-lg) {
+            .burger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 20px;
+                width: 26px;
+
+                .line {
+                    width: 26px;
+                    height: 2px;
+                    background-color: $dark-blue;
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                }
+
+                &.open {
+                    .line1 {
+                        transform: translate(0, 9px) rotate(45deg);
+                    }
+
+                    .line2 {
+                        opacity: 0;
+                    }
+
+                    .line3 {
+                        transform: translate(0, -9px) rotate(-45deg);
+                    }
+                }
             }
         }
+        
     }
 }

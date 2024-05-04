@@ -3,6 +3,10 @@
     .hero-wrapper {
         width: 80%;
         padding: 30px 0 100px;
+
+        @media screen and (max-width: $bp-lg) {
+            width: 100%;
+        }
     }
 
     h1 {
