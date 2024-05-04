@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultation {% endblock %}
+
+{% block body %}
+<div class="section bg-light-grey" id="update_doctor">
+    <div class="container">
+        <h4 class="mb-3">Consultation de {{ consultation.animalId.name }} ({{ consultation.animalId.typeId.typeName }}) du {{ consultation.date|date('d/m/Y') }}</h4>
+        <p class="mb-10">Proprietaire : {{ consultation.animalId.ownerId.userId.firstName }} {{ consultation.animalId.ownerId.userId.lastName }}</p>
+
+        <div class="consultation-wrapper">
+            <p>
+                <strong>Raison :</strong> {{ consultation.reason }}
+            </p>
+            <p>
+                <strong>Bilan et recommendations :</strong> {{ consultation.resume }}
+            </p>
+            <p>
+                <strong>Poids :</strong> {{ consultation.animalWeight }} kg
+            </p>
+            <p>
+                <strong>Prochaine visite prevu le :</strong> {{ consultation.nextVisit ? consultation.nextVisit|date('Y-m-d') : "Pas planifié" }}
+            </p>
+
+            <h5>Examen clinique :</h5>
+            <p>
+                <strong>Oreilles : </strong>
+                {% if consultation.controlEars == 1 %}
+                    RAS
+                {% elseif consultation.controlEars == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            <p>
+                <strong>Yeux : </strong>
+                {% if consultation.controlEyes == 1 %}
+                    RAS
+                {% elseif consultation.controlEyes == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            <p>
+                <strong>Oreilles : </strong>
+                {% if consultation.controlEars == 1 %}
+                    RAS
+                {% elseif consultation.controlEars == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            <p>
+                <strong>Peaux : </strong>
+                {% if consultation.controlSkin == 1 %}
+                    RAS
+                {% elseif consultation.controlSkin == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            <p>
+                <strong>Digestion : </strong>
+                {% if consultation.controlDigestion == 1 %}
+                    RAS
+                {% elseif consultation.controlDigestion == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            <p>
+                <strong>Coeur : </strong>
+                {% if consultation.controlHeart == 1 %}
+                    RAS
+                {% elseif consultation.controlHeart == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            <p>
+                <strong>Poumons : </strong>
+                {% if consultation.controlLungs == 1 %}
+                    RAS
+                {% elseif consultation.controlLungs == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            <p>
+                <strong>Locomoteur : </strong>
+                {% if consultation.controlMovement == 1 %}
+                    RAS
+                {% elseif consultation.controlMovement == 0 %}
+                    A controler
+                {% else %}
+                    Pas renseigné
+                {% endif %}
+            </p>
+            {% if consultation.document %}
+                Document: <a href="{{ asset('path/to/documents/' ~ consultation.document) }}">Download</a>
+            {% endif %}
+            <!-- Display vaccination details if any -->
+            {% if consultation.vaccinations|length %}
+                Vaccinations:
+                <ul>
+                    {% for vaccination in consultation.vaccinations %}
+                        <li>{{ vaccination.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <a href="{{ path('consultation', {'id': consultation.id}) }}" class="button outline mt-3">Modifier</a>
+        </div>
+        
+    </div>
+
+
+</div>
+{% endblock %}
