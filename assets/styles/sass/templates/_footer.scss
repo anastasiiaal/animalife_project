@@ -28,6 +28,10 @@ footer.footer {
                 height: 80px;
             }
         }
+
+        @media screen and (max-width: $bp-sm) {
+            display: none;
+        }
     }
     .footer__first {
         padding: 60px 20px;

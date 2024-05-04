@@ -26,6 +26,27 @@
         grid-template-columns: repeat(3, 1fr) auto;
         align-items: center;
         width: 100%;
+
+    }
+    @media screen and (max-width: $bp-sm) {
+        border-radius: 0;
+        border: none;
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            border-radius: 0%;
+            border: none;
+            border: 1px solid $dark-blue;
+
+            & > * {
+                width: 100%;
+                border-bottom: 1px solid $dark-blue;
+            }
+            .input-field, button {
+                border: none;
+                border-radius: 0px !important;
+            }
+        }
     }
 
     .input-wrapper {

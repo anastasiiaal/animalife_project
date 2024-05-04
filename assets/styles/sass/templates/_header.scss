@@ -4,12 +4,12 @@ header.header {
     align-items: center;
     background-color: $white;
     box-shadow: $shadow-lg;
+    position: relative;
     nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 15%;
-        position: relative;
         a.logo {
             display: flex;
             align-items: center;
@@ -55,12 +55,67 @@ header.header {
         }
 
         @media screen and (max-width: $bp-lg) {
+            gap: 20px;
+
+            .nav-wrapper.closed {
+                right: -100%;
+                display: none;
+                transition: $transition;
+            }
+
+            .nav-wrapper {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 50px 40px;
+                background-color: #ffffffe7;
+                backdrop-filter: blur(5px);
+                height: 100vh;
+                width: 50vw;
+                min-width: 300px;
+                z-index: 999;
+                flex-direction: column;
+                justify-content: start;
+                box-shadow: $shadow-lg;
+                // display: none;
+                align-items: start;
+                transition: $transition;
+
+
+                &> * {
+                    flex-direction: column;
+                }
+
+                .btn-wrapper {
+                    margin-top: 20px;
+                }
+
+            }
+
+            ul.nav a {
+                &:after {
+                    height: 80%;
+                    width: 0;
+                    left: -6px;
+                    bottom: 10%;
+
+                }
+                &:hover, &.active {
+                    &:after {
+                        height: 80%;
+                        width: 4px;
+                    }
+                }
+                
+            }
+
             .burger {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 height: 20px;
                 width: 26px;
+                z-index: 9999999;
 
                 .line {
                     width: 26px;
@@ -84,6 +139,5 @@ header.header {
                 }
             }
         }
-        
     }
 }
