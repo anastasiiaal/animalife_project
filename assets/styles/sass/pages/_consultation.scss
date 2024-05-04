@@ -1,0 +1,7 @@
+.consultation-wrapper {
+    @extend %wrapper;
+    
+    &> * {
+        margin-bottom: 10px;
+    }
+}

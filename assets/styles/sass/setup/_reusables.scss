@@ -24,3 +24,10 @@
     }
 }
 
+%wrapper {
+    padding: 25px;
+    box-shadow: $shadow-md;
+    border-radius: $radius-lg;
+    background-color: $white;
+}
+
