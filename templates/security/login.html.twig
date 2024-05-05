@@ -42,7 +42,8 @@
                 </p>
             </form>
             <div class="img-wrapper">
-                <img src="{{ asset('/images/login.jpg') }}" alt="">
+                {% set image_number = random(range(1, 26)) %}
+                <img src="{{ asset('/images/login-' ~ image_number ~ '.jpg') }}" alt="">
             </div>
         </div>
         
