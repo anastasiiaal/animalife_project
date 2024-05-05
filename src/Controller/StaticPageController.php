@@ -26,4 +26,10 @@ class StaticPageController extends AbstractController
     {
         return $this->render('static_pages/privacy_policy.html.twig');
     }
+
+    #[Route('/about', name: 'about')]
+    public function about(): Response
+    {
+        return $this->render('static_pages/about.html.twig');
+    }
 }
