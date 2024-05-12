@@ -6,7 +6,7 @@
 <div class="section">
     <div class="container">
         <h2 class="text-center mb-6">Catalogue vétérinaires</h2>
-        <form action="{{ path('doctors') }}" method="get" class="search-bar">
+        <form action="{{ emergency ? path('urgency') : path('doctors') }}" method="get" class="search-bar">
             <div class="input-group">
                 <div class="input-wrapper">
                     <img src="{{ asset('images/search.svg') }}" alt="Loope">
@@ -25,6 +25,9 @@
         </form>
 
         <div id="params">
+            {% if emergency %}
+                <div class="param urgency">Urgence</div>
+            {% endif %}
             {% for name, value in app.request.query.all %}
                 {% if value %}
                     <div class="param" data-param="{{ name }}">{{ value }} <span>&times;</span></div>
