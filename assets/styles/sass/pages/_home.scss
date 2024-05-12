@@ -1,7 +1,7 @@
 #hero {
 
     .hero-wrapper {
-        width: 80%;
+        width: 100%;
         padding: 30px 0 100px;
 
         @media screen and (max-width: $bp-lg) {
@@ -13,6 +13,101 @@
         margin: 40px 0;
     }
 
+}
+
+.home-reassurances {
+    .container {
+        position: relative;
+    }
+
+    .reassurances-wrapper {
+        position: absolute;
+        width: 100%;
+        top: -120px;
+        left: 0;
+        justify-content: center;
+        gap: 50px;
+
+        .reassurance {
+            padding: 40px 20px;
+            box-shadow: $shadow-md;
+            background-color: $white;
+            border-radius: $radius-lg;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+
+            p {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media screen and (max-width: $bp-lg) {
+            gap: 30px;
+
+            .reassurance {
+                padding: 20px 10px;
+            }
+        }
+
+    }
+    @media screen and (max-width: $bp-md) {
+        display: none;
+    }
+}
+
+.home-pro, .home-app {
+    .wrapper {
+        align-items: center;
+
+        & > * {
+            width: 48%;
+        }
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        li {
+            padding: 10px 0;
+            list-style: disc;
+            line-height: 150%;
+        }
+
+        @media screen and (max-width: $bp-md) {
+            flex-direction: column;
+            & > * {
+                width: 100%;
+            }
+
+            li {
+                list-style: inside;
+            }
+        }
+    }
+}
+
+.home-app {
+    .text-wrapper img {
+        cursor: pointer;
+    }
+    @media screen and (max-width: $bp-md) {
+        .wrapper > img {
+            display: none;
+        }
+
+        .text-wrapper {
+            text-align: center;
+
+            img {
+                margin: 0 auto;
+            }
+        }
+    }
 }
 
 .search-bar {

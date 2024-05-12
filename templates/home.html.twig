@@ -27,18 +27,67 @@
         </div>
     </div>
 </section>
-<section class="">
+
+<section class="home-reassurances">
     <div class="container">
-        <h2 class="text-center">
-            Trouver un vétérinaire pour tous vos compagnons
-        </h2>
+        <div class="reassurances-wrapper flex">
+            <div class="reassurance">
+                <p>Prenez rendez-vous en 1 clic</p>
+                <a href="{{ path('doctors') }}" class="button">Prendre un rendez-vous</a>
+            </div>
+            <div class="reassurance">
+                <p>Suivez le santé de tous vos animaux </p>
+                <a href="{{ app.user ? path('user_account') : path('app_login') }}" class="button">Acceder à mon compte</a>
+            </div>
+            <div class="reassurance">
+                <p>Trouvez un vétérinaire de garde</p>
+                <a href="{{ path('doctors') }}" class="button">Urgence</a>
+            </div>
+        </div>
     </div>
 </section>
-<section class="bg-blue">
+
+<section class="home-pro">
     <div class="container">
         <h2 class="text-center">
-            La confidentialité des données
+            Devenir PRO sur AnimaLife
         </h2>
+        <div class="wrapper mt-10 flex gap-10">
+            <img src="{{ asset('images/home-bandage.png') }}" alt="Devenir pro">
+            <div class="text-wrapper">
+                <ul>
+                    <li>
+                        Libérez du temps médical grâce à la prise de rendez-vous en ligne et un logiciel moderne
+                    </li>
+                    <li>
+                        Développez l'activité de votre cabinet selon vos besoins grâce à une meilleure visibilité en ligne
+                    </li>
+                    <li>
+                        Gagnez en confort de travail au quotidien en réduisant les appels téléphoniques à votre cabinet
+                    </li>
+                    <li>
+                        Améliorez l'accès aux soins pour vos patients en leur proposant la meilleure des expériences
+                    </li>
+                </ul>
+                <a href="{{ path('vet_register') }}" class="button mt-5">Découvrir Animalife PRO</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-app bg-light-grey">
+    <div class="container">
+        <div class="wrapper flex gap-10">
+            <div class="text-wrapper">
+                <h2>Prochainement ...</h2>
+                <p class="my-8">
+                    Prendre rendez-vous en 1 clic, grâce à l’application ANIMALIFE. 
+                    <br>Bientôt téléchargable sur Android et IOS 
+                </p>
+                <img src="{{ asset('images/apps-telechargement-PNG.png') }}" alt="">
+            </div>
+            <img src="{{ asset('images/home-app.png') }}" alt="Application prochainement">
+        </div>
     </div>
 </section>
 {% endblock %}
