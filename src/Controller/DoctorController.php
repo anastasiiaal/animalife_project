@@ -6,6 +6,7 @@ use App\Entity\Doctor;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,9 +14,12 @@ use Symfony\Component\Routing\Attribute\Route;
 class DoctorController extends AbstractController
 {
     private $em;
-    public function __construct(EntityManagerInterface $em)
+    private $security;
+
+    public function __construct(EntityManagerInterface $em, Security $security)
     {
         $this->em = $em;
+        $this->security = $security;
     }
 
     #[Route('/doctors', name: 'doctors', methods: ['GET'])]
@@ -31,25 +35,26 @@ class DoctorController extends AbstractController
         $name = $request->query->get('name');
         if ($name) {
             $queryBuilder->andWhere('user.firstName LIKE :name OR user.lastName LIKE :name OR doctor.clinicName LIKE :name')
-                         ->setParameter('name', '%' . $name . '%');
+                        ->setParameter('name', '%' . $name . '%');
         }
 
         $animal = $request->query->get('animal');
         if ($animal) {
             $queryBuilder->andWhere('animal_types.typeName LIKE :animal')
-                         ->setParameter('animal', '%' . $animal . '%');
+                        ->setParameter('animal', '%' . $animal . '%');
         }
 
         $location = $request->query->get('location');
         if ($location) {
             $queryBuilder->andWhere('city.cityName LIKE :location OR city.postcode LIKE :location')
-                         ->setParameter('location', '%' . $location . '%');
+                        ->setParameter('location', '%' . $location . '%');
         }
 
         $doctors = $queryBuilder->getQuery()->getResult();
 
         return $this->render('doctor/list.html.twig', [
             'doctors' => $doctors,
+            'emergency' => false
         ]);
     }
 
@@ -76,6 +81,48 @@ class DoctorController extends AbstractController
         // dd($doctor);
         return $this->render('doctor/doctor.html.twig', [
             'doctor' => $doctor
+        ]);
+    }
+
+    #[Route('/urgency', name: 'urgency', methods: ['GET'])]
+    public function urgency(Request $request): Response
+    {
+        $queryBuilder = $this->em->createQueryBuilder()
+            ->select('doctor', 'user', 'city', 'animal_types')
+            ->from('App\Entity\Doctor', 'doctor')
+            ->leftJoin('doctor.userId', 'user')
+            ->leftJoin('doctor.cityId', 'city')
+            ->leftJoin('doctor.animalTypes', 'animal_types')
+            ->where('doctor.isEmergency = :emergency')
+            ->setParameter('emergency', true);
+
+        $name = $request->query->get('name');
+        if ($name) {
+            $queryBuilder->andWhere('user.firstName LIKE :name OR user.lastName LIKE :name OR doctor.clinicName LIKE :name')
+                        ->setParameter('name', '%' . $name . '%');
+        }
+
+        $animal = $request->query->get('animal');
+        if ($animal) {
+            $queryBuilder->andWhere('animal_types.typeName LIKE :animal')
+                        ->setParameter('animal', '%' . $animal . '%');
+        }
+
+        $location = $request->query->get('location');
+        if ($location) {
+            $queryBuilder->andWhere('city.cityName LIKE :location OR city.postcode LIKE :location')
+                        ->setParameter('location', '%' . $location . '%');
+        }
+
+        $queryBuilder->andWhere('doctor.isEmergency = :emergency')
+                        ->setParameter('emergency', true);
+
+
+        $doctors = $queryBuilder->getQuery()->getResult();
+
+        return $this->render('doctor/list.html.twig', [
+            'doctors' => $doctors,
+            'emergency' => true
         ]);
     }
 }

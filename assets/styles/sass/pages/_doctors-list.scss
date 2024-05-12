@@ -83,5 +83,10 @@
             font-size: 18px;
             margin-top: 1px;
         }
+
+        &.urgency {
+            background-color: $coral;
+            min-height: 33px;
+        }
     }
 }

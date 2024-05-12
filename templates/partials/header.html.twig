@@ -30,10 +30,10 @@
                             <a class="{{ app.request.attributes.get('_route') == 'doctors' ? 'active' : '' }}" href="{{ path('doctors') }}">Tous les véterinaires</a>
                         </li>
                         <li>
-                            <a  class="{{ app.request.attributes.get('_route') == 'about' ? 'active' : '' }}"href="{{ path('about') }}">À propos de nous</a>
+                            <a class="{{ app.request.attributes.get('_route') == 'about' ? 'active' : '' }}" href="{{ path('about') }}">À propos de nous</a>
                         </li>
                         <li>
-                            <a href="{{ path('doctors') }}" class="urgency">Urgence</a>
+                            <a  class="{{ app.request.attributes.get('_route') == 'urgency' ? 'active' : '' }}" href="{{ path('urgency') }}" class="urgency">Urgence</a>
                         </li>
                     {% endif %}
                     </ul>
