@@ -67,7 +67,7 @@ header.header {
                 position: absolute;
                 top: 0;
                 right: 0;
-                padding: 50px 40px;
+                padding: 80px 40px;
                 background-color: #ffffffe7;
                 backdrop-filter: blur(5px);
                 height: 100vh;
@@ -87,18 +87,25 @@ header.header {
                 }
 
                 .btn-wrapper {
-                    margin-top: 20px;
+                    margin-top: 30px;
+                    gap: 16px;
                 }
 
             }
 
+            ul.nav li {
+                margin: 5px 0;
+            }
+
             ul.nav a {
+                font-size: 15px;
+                padding: 10px 0;
+
                 &:after {
                     height: 80%;
                     width: 0;
-                    left: -6px;
+                    left: -14px;
                     bottom: 10%;
-
                 }
                 &:hover, &.active {
                     &:after {
