@@ -43,3 +43,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// function that only allows submit of RDV form if both animal and time were selected
+// also makes overlay visible if form is submitted
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('rdv');
+    const overlay = document.getElementById('overlay');
+    const animalRadios = document.querySelectorAll('input[type="radio"][name="animalId"]');
+    const appointmentRadios = document.querySelectorAll('input[type="radio"][name="appointmentId"]');
+
+    function updateButtonState() {
+        const isAnimalSelected = Array.from(animalRadios).some(radio => radio.checked);
+        const isAppointmentSelected = Array.from(appointmentRadios).some(radio => radio.checked);
+
+        // Enable button if both radio groups have selections
+        if (isAnimalSelected && isAppointmentSelected) {
+            btn.classList.remove('disabled');
+        } else {
+            if (!btn.classList.contains('disabled')) {
+                btn.classList.add('disabled');
+            }
+        }
+    }
+
+    animalRadios.forEach(radio => radio.addEventListener('change', updateButtonState));
+    appointmentRadios.forEach(radio => radio.addEventListener('change', updateButtonState));
+
+    btn.addEventListener('click', function() {
+        if (!btn.classList.contains('disabled')) {
+            overlay.classList.remove('hidden');
+        }
+    });
+});

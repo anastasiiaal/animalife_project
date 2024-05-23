@@ -44,7 +44,7 @@
             <div class="date-wrapper">
                 <div class="date">
                     <p>Vendredi</p>
-                    <p>7 mai</p>
+                    <p>24 mai</p>
                 </div>
                 <div class="appointments">
                     <div class="appointment">
@@ -55,52 +55,74 @@
                     <div class="appointment">
                         <input id="b" type="radio" name="appointmentId" value="b" required>
                         <label for="b"></label>
-                        12:40
+                        13:50
                     </div>
                     <div class="appointment">
                         <input id="c" type="radio" name="appointmentId" value="c" required>
                         <label for="c"></label>
-                        12:40
+                        15:50
                     </div>
                     <div class="appointment">
                         <input id="d" type="radio" name="appointmentId" value="d" required>
                         <label for="d"></label>
-                        12:40
+                        18:30
                     </div>
                 </div>
             </div>
 
             <div class="date-wrapper">
                 <div class="date">
-                    <p>Vendredi</p>
-                    <p>7 mai</p>
+                    <p>Lundi</p>
+                    <p>27 mai</p>
                 </div>
                 <div class="appointments">
                     <div class="appointment">
                         <input id="e" type="radio" name="appointmentId" value="e" required>
                         <label for="e"></label>
-                        12:40
+                        8:30
                     </div>
                     <div class="appointment">
                         <input id="f" type="radio" name="appointmentId" value="f" required>
                         <label for="f"></label>
-                        12:40
+                        10:40
                     </div>
                     <div class="appointment">
                         <input id="g" type="radio" name="appointmentId" value="g" required>
                         <label for="g"></label>
-                        12:40
+                        11:00
                     </div>
                     <div class="appointment">
                         <input id="i" type="radio" name="appointmentId" value="i" required>
                         <label for="i"></label>
-                        12:40
+                        14:00
+                    </div>
+                    <div class="appointment">
+                        <input id="j" type="radio" name="appointmentId" value="j" required>
+                        <label for="j"></label>
+                        14:20
+                    </div>
+                    <div class="appointment">
+                        <input id="k" type="radio" name="appointmentId" value="k" required>
+                        <label for="k"></label>
+                        17:30
+                    </div>
+                    <div class="appointment">
+                        <input id="l" type="radio" name="appointmentId" value="l" required>
+                        <label for="l"></label>
+                        17:50
                     </div>
                 </div>
             </div>
         </div>
 
-        <button class="button button-lg mt-10 ml-[50%] translate-x-[-50%]">Prendre Rendez-vous</button>
+        <button id="rdv" class="button button-lg disabled mt-10 ml-[50%] translate-x-[-50%]">Prendre Rendez-vous</button>
+    </div>
+
+    <div class="overlay hidden" id="overlay">
+        <div class="modal">
+            <h4>Votre Rendez-vous a été pris</h4>
+            <a class="button mt-5" href="{{ path('user_account') }}">Retour à mon compte</a>
+        </div>
     </div>
 </div>
 {% endblock %}
