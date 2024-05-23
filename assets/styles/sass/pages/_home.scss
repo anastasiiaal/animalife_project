@@ -123,26 +123,6 @@
         width: 100%;
 
     }
-    @media screen and (max-width: $bp-sm) {
-        border-radius: 0;
-        border: none;
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            border-radius: 0%;
-            border: none;
-            border: 1px solid $dark-blue;
-
-            & > * {
-                width: 100%;
-                border-bottom: 1px solid $dark-blue;
-            }
-            .input-field, button {
-                border: none;
-                border-radius: 0px !important;
-            }
-        }
-    }
 
     .input-wrapper {
         position: relative;
@@ -183,5 +163,33 @@
         cursor: pointer;
         outline: none;
         font-weight: 500;
+    }
+
+    @media screen and (max-width: $bp-sm) {
+        border-radius: 0;
+        border: none;
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            border-radius: 0%;
+            border: none;
+            box-shadow: $shadow-md;
+
+            & > * {
+                width: 100%;
+                border-bottom: 1px solid $dark-blue;
+            }
+            .input-field, button {
+                border: none;
+            }
+
+            .input-field.first {
+                border-radius: $radius-sm $radius-sm 0 0;
+            }
+
+            button {
+                border-radius: 0 0 $radius-sm $radius-sm;
+            }
+        }
     }
 }
