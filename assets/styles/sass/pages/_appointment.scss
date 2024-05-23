@@ -1,7 +1,10 @@
 #appointment {
+    h3 {
+        margin-bottom: 20px;
+    }
     .animals-wrapper {
         @extend %card-wrapper;
-        margin-bottom: 0px;
+        margin: 0px;
 
         .animal-card {
             @extend %card;
@@ -27,6 +30,7 @@
                 left: 0;
                 height: 100%;
                 width: 100%;
+                cursor: pointer;
             }
 
             input[type="radio"] {
@@ -44,6 +48,54 @@
                     right: 30px;
                     transform: translateY(-50%);
                 }
+            }
+        }
+    }
+
+    .appointments-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .date-wrapper {
+            @extend %wrapper;
+            display: flex;
+            gap: 20px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+
+        .date {
+            width: 100px;
+        }
+
+        .appointments {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .appointment {
+            padding: 10px 12px;
+            background-color: $dark-blue;
+            color: $white;
+            border-radius: $radius-sm;
+            position: relative;
+            
+            label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
+            }
+
+            input[type="radio"] {
+                display: none;
+            }
+
+            &.selected {
+                background-color: $blue;
             }
         }
     }

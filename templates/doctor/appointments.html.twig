@@ -5,7 +5,7 @@
 {% block body %}
 <div class="section bg-light-grey" id="appointment">
     <div class="container">
-        <h3>Choisissez votre animal</h3>
+        <h3>Rendez-vous pour qui ?</h3>
         <div class="animals-wrapper">
             <div class="animal-card">
                 <input id="1" type="radio" name="animalId" value="1" required>
@@ -35,30 +35,72 @@
                 </div>
             </div>
         </div>
-        <a href="{{ path('create_animal') }}" class="button">Ajouter un nouvel animal</a>
+        <a href="{{ path('create_animal') }}" class="button outline">Ajouter un nouvel animal</a>
     </div>
+
     <div class="container py-10">
         <h3>Créneaux disponibles</h3>
         <div class="appointments-wrapper">
             <div class="date-wrapper">
-                <p>Vendredi</p>
-                <p>7 mai</p>
+                <div class="date">
+                    <p>Vendredi</p>
+                    <p>7 mai</p>
+                </div>
+                <div class="appointments">
+                    <div class="appointment">
+                        <input id="a" type="radio" name="appointmentId" value="a" required>
+                        <label for="a"></label>
+                        12:40
+                    </div>
+                    <div class="appointment">
+                        <input id="b" type="radio" name="appointmentId" value="b" required>
+                        <label for="b"></label>
+                        12:40
+                    </div>
+                    <div class="appointment">
+                        <input id="c" type="radio" name="appointmentId" value="c" required>
+                        <label for="c"></label>
+                        12:40
+                    </div>
+                    <div class="appointment">
+                        <input id="d" type="radio" name="appointmentId" value="d" required>
+                        <label for="d"></label>
+                        12:40
+                    </div>
+                </div>
             </div>
-            <div class="appointments">
-                <div class="appointment">
-                    12:40
+
+            <div class="date-wrapper">
+                <div class="date">
+                    <p>Vendredi</p>
+                    <p>7 mai</p>
                 </div>
-                <div class="appointment">
-                    12:40
-                </div>
-                <div class="appointment">
-                    12:40
-                </div>
-                <div class="appointment">
-                    12:40
+                <div class="appointments">
+                    <div class="appointment">
+                        <input id="e" type="radio" name="appointmentId" value="e" required>
+                        <label for="e"></label>
+                        12:40
+                    </div>
+                    <div class="appointment">
+                        <input id="f" type="radio" name="appointmentId" value="f" required>
+                        <label for="f"></label>
+                        12:40
+                    </div>
+                    <div class="appointment">
+                        <input id="g" type="radio" name="appointmentId" value="g" required>
+                        <label for="g"></label>
+                        12:40
+                    </div>
+                    <div class="appointment">
+                        <input id="i" type="radio" name="appointmentId" value="i" required>
+                        <label for="i"></label>
+                        12:40
+                    </div>
                 </div>
             </div>
         </div>
+
+        <button class="button button-lg mt-10 ml-[50%] translate-x-[-50%]">Prendre Rendez-vous</button>
     </div>
 </div>
 {% endblock %}

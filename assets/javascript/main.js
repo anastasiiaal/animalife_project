@@ -22,3 +22,24 @@ document.getElementById('burger').addEventListener('click', function() {
         navWrapper.classList.remove('closed');
     }
 });
+
+// function to add class .selected to the wrapper of a selected appointment hour
+document.addEventListener('DOMContentLoaded', function() {
+    const radios = document.querySelectorAll('.appointment input[type="radio"]');
+
+    radios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            radios.forEach(r => r.parentNode.classList.remove('selected'));
+
+            if (radio.checked) {
+                radio.parentNode.classList.add('selected');
+            }
+        });
+    });
+
+    radios.forEach(radio => {
+        if (radio.checked) {
+            radio.parentNode.classList.add('selected');
+        }
+    });
+});
