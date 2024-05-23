@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prendre RDV chez {% endblock %}
+
+{% block body %}
+<div class="section bg-light-grey" id="appointment">
+    <div class="container">
+        <h3>Choisissez votre animal</h3>
+        <div class="animals-wrapper">
+            <div class="animal-card">
+                <input id="1" type="radio" name="animalId" value="1" required>
+                <label for="1"></label>
+                <img src="/uploads/6622187ab8706.jpg" alt="Image de Toto">
+                <div class="animal-card__text">
+                    <h4 class="mb-1">Toto</h4>
+                    <p>Chien, femelle</p>
+                </div>
+            </div>
+            <div class="animal-card">
+                <input id="2" type="radio" name="animalId" value="2" required>
+                <label for="2"></label>
+                <img src="/uploads/6622187ab8706.jpg" alt="Image de Toto">
+                <div class="animal-card__text">
+                    <h4 class="mb-1">Toto</h4>
+                    <p>Chien, femelle</p>
+                </div>
+            </div>
+            <div class="animal-card">
+                <input id="3" type="radio" name="animalId" value="3" required>
+                <label for="3"></label>
+                <img src="/uploads/6622187ab8706.jpg" alt="Image de Toto">
+                <div class="animal-card__text">
+                    <h4 class="mb-1">Toto</h4>
+                    <p>Chien, femelle</p>
+                </div>
+            </div>
+        </div>
+        <a href="{{ path('create_animal') }}" class="button">Ajouter un nouvel animal</a>
+    </div>
+    <div class="container py-10">
+        <h3>Créneaux disponibles</h3>
+        <div class="appointments-wrapper">
+            <div class="date-wrapper">
+                <p>Vendredi</p>
+                <p>7 mai</p>
+            </div>
+            <div class="appointments">
+                <div class="appointment">
+                    12:40
+                </div>
+                <div class="appointment">
+                    12:40
+                </div>
+                <div class="appointment">
+                    12:40
+                </div>
+                <div class="appointment">
+                    12:40
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

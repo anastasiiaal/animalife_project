@@ -32,4 +32,10 @@ class StaticPageController extends AbstractController
     {
         return $this->render('static_pages/about.html.twig');
     }
+
+    #[Route('/test', name: 'test')]
+    public function test(): Response
+    {
+        return $this->render('doctor/appointments.html.twig');
+    }
 }

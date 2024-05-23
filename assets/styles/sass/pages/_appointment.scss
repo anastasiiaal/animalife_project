@@ -1,0 +1,50 @@
+#appointment {
+    .animals-wrapper {
+        @extend %card-wrapper;
+        margin-bottom: 0px;
+
+        .animal-card {
+            @extend %card;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            position: relative;
+
+            &:hover {
+                box-shadow: $shadow-xl;
+            }
+
+            img {
+                height: 45px;
+                width: 45px;
+                border-radius: 100%;
+                object-fit: cover;
+            }
+
+            label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            input[type="radio"] {
+                display: none;
+            }
+
+            input[type="radio"]:checked + label {
+                box-shadow: $shadow-lg;
+                border-radius: $radius-lg;
+                border: 1px solid $dark-blue;
+                &:after {
+                    content: url('/assets/images/tick.svg');
+                    position: absolute;
+                    top: 50%;
+                    right: 30px;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
