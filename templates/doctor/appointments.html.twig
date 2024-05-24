@@ -7,42 +7,23 @@
     <div class="container">
         <h3>Rendez-vous pour qui ?</h3>
         <div class="animals-wrapper">
-            <div class="animal-card">
-                <input id="1" type="radio" name="animalId" value="1" required>
-                <label for="1"></label>
-                <img src="/uploads/6622187ab8706.jpg" alt="Image de Toto">
-                <div class="animal-card__text">
-                    <h4 class="mb-1">Toto</h4>
-                    <p>Chien, mâle</p>
-                </div>
-            </div>
-            <div class="animal-card">
-                <input id="4" type="radio" name="animalId" value="4" required>
-                <label for="4"></label>
-                <img src="/assets/images/placeholder-802731f2da3fae0a70f197390bc878d4.png" alt="Image de Toto">
-                <div class="animal-card__text">
-                    <h4 class="mb-1">Luna</h4>
-                    <p>Chat, femelle</p>
-                </div>
-            </div>
-            <div class="animal-card">
-                <input id="2" type="radio" name="animalId" value="2" required>
-                <label for="2"></label>
-                <img src="/uploads/66222610748d0.jpg" alt="Image de Toto">
-                <div class="animal-card__text">
-                    <h4 class="mb-1">Toutou</h4>
-                    <p>Chien, femelle</p>
-                </div>
-            </div>
-            <div class="animal-card">
-                <input id="3" type="radio" name="animalId" value="3" required>
-                <label for="3"></label>
-                <img src="/uploads/662278c6bd340.jpg" alt="Image de Toto">
-                <div class="animal-card__text">
-                    <h4 class="mb-1">Minou</h4>
-                    <p>Rat, femelle</p>
-                </div>
-            </div>
+
+
+            {% if animals %}
+                {% for animal in animals %}
+                    <div class="animal-card">
+                        <input id="{{ animal.id }}" type="radio" name="animalId" value="{{ animal.id }}" required>
+                        <label for="{{ animal.id }}"></label>
+                        <img src="{{ animal.imagePath ? animal.imagePath : asset('images/placeholder.png') }}"  alt="Image de {{ animal.name }}">
+                        <div class="animal-card__text">
+                            <h4 class="mb-1">{{ animal.name }}</h4>
+                            <p>{{ animal.typeName }}, {{ animal.sex == "male" ? "Mâle" : "Femelle" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h4>Aucun animal enregistré</h4>
+            {% endif %}
         </div>
         <a href="{{ path('create_animal') }}" class="button outline">Ajouter un nouvel animal</a>
     </div>

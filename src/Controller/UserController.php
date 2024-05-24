@@ -154,4 +154,53 @@ class UserController extends AbstractController
             throw $this->createAccessDeniedException('You do not have permission to view this page.');
         }
     }
+
+    #[Route('/test_appointment', name: 'test_appointment')]
+    public function testAppointment(): Response
+    {
+        $user = $this->security->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Check the user's role ID
+        if ($user->getRoleId() == 1) {
+            // Handle regular users
+            $petOwner = $this->em->getRepository(PetOwner::class)->findOneBy(['userId' => $user]);
+
+            if (!$petOwner) {
+                // Handle cases where there is no PetOwner record for the user
+                return $this->render('user/index.html.twig', [
+                    'user' => $user,
+                    'animals' => []
+                ]);
+            }
+
+            $animals = $petOwner->getAnimals();
+            $animalDetails = [];
+
+            // Populate animal details including type name
+            foreach ($animals as $animal) {
+                $animalDetails[] = [
+                    'id' => $animal->getId(),
+                    'name' => $animal->getName(),
+                    'imagePath' => $animal->getImagePath(),
+                    'sex' => $animal->getSex(),
+                    'typeName' => $animal->getTypeId() ? $animal->getTypeId()->getTypeName() : 'Unknown',
+                ];
+            }
+
+            // dd($animalDetails);
+            return $this->render('doctor/appointments.html.twig', [
+                'user' => $user,
+                'animals' => $animalDetails
+            ]);
+        } else if ($user->getRoleId() == 2) {
+            return $this->redirectToRoute('error403');
+        }
+
+        // Optionally handle other roles or invalid roleIds
+        return $this->redirectToRoute('home');
+    }
 }
