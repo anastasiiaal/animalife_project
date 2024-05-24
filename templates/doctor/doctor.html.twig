@@ -51,7 +51,7 @@
                     <p>Consultation à partir de {{ doctor.consultationPrice }} €</p>
                 </div>
                 <p class="my-3">Prochain rendez-vous : <strong> dès demain </strong></p>
-                <a href="{{ path('test') }}" class="button w-full upper text-center">Prendre rendez-vous</a>
+                <a href="{{ app.user ? path('test_appointment') : path('app_login') }}" class="button w-full upper text-center">Prendre rendez-vous</a>
             </div>
         </div>
 
