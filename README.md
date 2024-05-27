@@ -1,12 +1,14 @@
-# Animalife 🐈‍⬛🐕
+# AnimaLife 🐾
 
-A user-friendly online platform, AnimaLife is designed to make life easier for both pet owners and veterinarians. It helps save and manage the health history of pets, search for veterinarians, book urgent appointments, and much more.
+A user-friendly online platform, AnimaLife is designed to make life easier for both pet owners and veterinarians. It helps save and manage the health history of pets, search for veterinarians, book urgent appointments, and much more. 
 
 ![](/assets/images/screen.png)
 
+[Click here](animalife.ovh) to see the prototype! (Don't be too harsh, it is still in progress ✨)
+
 ## Tech stack
 
-**Backend**
+### 💾 Backend 
 - Symfony
 - Symfony Security Component
 - Doctrine
@@ -14,7 +16,7 @@ A user-friendly online platform, AnimaLife is designed to make life easier for b
 - MySQL
 - PHPMyAdmin
 
-**Frontend**
+### 🎨 Frontend 
 - Twig
 - Tailwind
 - Vanilla JS
@@ -23,9 +25,12 @@ A user-friendly online platform, AnimaLife is designed to make life easier for b
 
 ## Useful commands
 ```bash
-to start a server
+// to start a server
     symfony server start -d
 
-to build js + css + scss
-    npm run watch / dev
+// to build js + css + scss
+    npm run watch
+
+// to prepare deployment
+    npm run build
 ```
