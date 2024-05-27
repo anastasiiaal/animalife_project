@@ -4,7 +4,7 @@ A user-friendly online platform, AnimaLife is designed to make life easier for b
 
 ![](/assets/images/screen.png)
 
-[Click here](animalife.ovh) to see the prototype! (Don't be too harsh, it is still in progress ✨)
+[Click here](https://animalife.ovh/) to see the prototype! (Don't be too harsh, it is still in progress ✨)
 
 ## Tech stack
 
