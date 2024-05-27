@@ -24,6 +24,10 @@
             background-color: $dark-blue;
             color: $white;
         }
+
+        &:focus {
+            outline: 2px solid black;
+        }
     }
 
     &.w-full {

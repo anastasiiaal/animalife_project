@@ -11,7 +11,7 @@
 
             {% if animals %}
                 {% for animal in animals %}
-                    <div class="animal-card">
+                    <div role="button" tabindex="0" class="animal-card">
                         <input id="{{ animal.id }}" type="radio" name="animalId" value="{{ animal.id }}" required>
                         <label for="{{ animal.id }}"></label>
                         <img src="{{ animal.imagePath ? animal.imagePath : asset('images/placeholder.png') }}"  alt="Image de {{ animal.name }}">
@@ -37,22 +37,22 @@
                     <p>{{"now"|date("d M")}}</p>
                 </div>
                 <div class="appointments">
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="a" type="radio" name="appointmentId" value="a" required>
                         <label for="a"></label>
                         14:50
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="b" type="radio" name="appointmentId" value="b" required>
                         <label for="b"></label>
                         15:30
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="c" type="radio" name="appointmentId" value="c" required>
                         <label for="c"></label>
                         15:50
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="d" type="radio" name="appointmentId" value="d" required>
                         <label for="d"></label>
                         18:30
@@ -66,37 +66,37 @@
                     <p>{{"now"|date_modify("+1 day")|date("d M")}}</p>
                 </div>
                 <div class="appointments">
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="e" type="radio" name="appointmentId" value="e" required>
                         <label for="e"></label>
                         8:30
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="f" type="radio" name="appointmentId" value="f" required>
                         <label for="f"></label>
                         10:40
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="g" type="radio" name="appointmentId" value="g" required>
                         <label for="g"></label>
                         11:00
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="i" type="radio" name="appointmentId" value="i" required>
                         <label for="i"></label>
                         14:00
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="j" type="radio" name="appointmentId" value="j" required>
                         <label for="j"></label>
                         14:20
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="k" type="radio" name="appointmentId" value="k" required>
                         <label for="k"></label>
                         17:30
                     </div>
-                    <div class="appointment">
+                    <div class="appointment" role="button" tabindex="0">
                         <input id="l" type="radio" name="appointmentId" value="l" required>
                         <label for="l"></label>
                         17:50
