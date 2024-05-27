@@ -1,4 +1,12 @@
 #user_account {
+    .user-header {
+        @media screen and (max-width: $bp-sm) {
+            .btn-wrapper {
+                flex-direction: column
+            }
+        }
+    }
+
     .animals-wrapper {
         @extend %card-wrapper;
 

@@ -5,8 +5,8 @@
 {% block body %}
 <div class="section" id="update_animal">
     <div class="container container-form">
-        <div class="flex justify-between mb-10">
-            <h2>Modifier la fiche de {{ animal.name }}</h2>
+        <div class="flex justify-between mb-10 items-center gap-3">
+            <h3>Modifier la fiche de {{ animal.name }}</h3>
             <a href="{{ path('delete_animal', {'id': animal.id}) }}" class="button outline" type="submit">
                 Supprimer l'animal
             </a>

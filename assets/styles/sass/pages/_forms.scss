@@ -149,13 +149,18 @@
                 display: inline-block;
                 box-sizing: border-box;
                 width: 20%;
-                min-width: 105px;
+                min-width: 104px;
                 margin: 0;
                 transition: background-color 0.3s, color 0.3s, border-color 0.3s;
                 text-align: center;
                 border: 1px solid $grey;
                 // border-radius: $radius-md;
                 color: $grey;
+
+                @media screen and (max-width: $bp-sm) {
+                    padding: 8px 6px;
+                    min-width: 96px;
+                }
 
                 &:first-of-type {
                     border-radius: $radius-md 0 0 $radius-md;
