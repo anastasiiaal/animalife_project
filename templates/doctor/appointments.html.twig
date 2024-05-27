@@ -34,7 +34,7 @@
             <div class="date-wrapper">
                 <div class="date">
                     <p>Vendredi</p>
-                    <p>24 mai</p>
+                    <p>{{"now"|date("d M")}}</p>
                 </div>
                 <div class="appointments">
                     <div class="appointment">
@@ -63,7 +63,7 @@
             <div class="date-wrapper">
                 <div class="date">
                     <p>Lundi</p>
-                    <p>27 mai</p>
+                    <p>{{"now"|date_modify("+1 day")|date("d M")}}</p>
                 </div>
                 <div class="appointments">
                     <div class="appointment">
