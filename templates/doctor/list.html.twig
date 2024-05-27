@@ -3,7 +3,7 @@
 {% block title %}Catalogue veterinaires{% endblock %}
 
 {% block body %}
-<div class="section bg-light-grey">
+<div class="section bg-light-grey" id="doctors-list">
     <div class="container">
         <h2 class="text-center mb-6">Catalogue vétérinaires</h2>
         <form action="{{ emergency ? path('urgency') : path('doctors') }}" method="get" class="search-bar">
