@@ -1,0 +1,35 @@
+{
+    "name": "AnimaLife",
+    "short_name": "AnimaLife",
+    "description": "AnimaLife - Plateforme pour gerer les Rendez-Vous vétérinaires",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3D606F",
+    "lang": "fr",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "scope": "/",
+    "orientation": "portrait",
+    "related_applications": [
+        {
+            "platform": "web"
+        }
+    ]
+}

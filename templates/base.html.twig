@@ -6,6 +6,8 @@
         <title>{% block title %}AnimaLife 🐶{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#3D606F">
         {% block stylesheets %}
             {# <link rel="stylesheet" href="{{ asset('styles/app.scss') }}"> #}
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
@@ -20,5 +22,17 @@
         {% include 'partials/header.html.twig' %}
         {% block body %}{% endblock %}
         {% include 'partials/footer.html.twig' %}
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/service-worker.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                })
+                .catch(function(error) {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            }
+        </script>
     </body>
 </html>
