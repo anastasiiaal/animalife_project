@@ -45,10 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // function that only allows submit of RDV form if both animal and time were selected
-// also makes overlay visible if form is submitted
+// also makes overlay visible if form is submitted & make <body> unscrollable
 document.addEventListener('DOMContentLoaded', function() {
     const btn = document.getElementById('rdv');
     const overlay = document.getElementById('overlay');
+    const body = document.body;
     const animalRadios = document.querySelectorAll('input[type="radio"][name="animalId"]');
     const appointmentRadios = document.querySelectorAll('input[type="radio"][name="appointmentId"]');
 
@@ -71,7 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     btn.addEventListener('click', function() {
         if (!btn.classList.contains('disabled')) {
+            window.scrollTo(0, 0);
             overlay.classList.remove('hidden');
+            body.classList.add('no-scroll');
         }
     });
 });

@@ -108,6 +108,7 @@
         height: 100%;
         width: 100%;
         z-index: 99999;
+        
 
         .modal {
             @extend %card;
@@ -118,6 +119,12 @@
             display: flex;
             align-items: center;
             flex-direction: column;
+            max-width: 90%;
+            text-align: center;
         }
     }
+}
+
+.no-scroll {
+    overflow: hidden;
 }
