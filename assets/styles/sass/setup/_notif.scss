@@ -1,0 +1,19 @@
+.update-notification {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: $white;
+	color: $dark-blue;
+	text-align: center;
+	padding: 15px;
+	box-shadow: $shadow-md;
+}
+
+.update-notification p {
+	margin: 0;
+	padding: 0;
+}
+
+.update-notification button {
+	margin-top: 10px;
+}

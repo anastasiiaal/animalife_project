@@ -8,6 +8,12 @@
         <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#3D606F">
+        <!-- iOS specific meta tags -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="apple-mobile-web-app-title" content="AnimaLife">
+        <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">
+
         {% block stylesheets %}
             {# <link rel="stylesheet" href="{{ asset('styles/app.scss') }}"> #}
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
@@ -28,9 +34,35 @@
                 navigator.serviceWorker.register('/service-worker.js')
                 .then(function(registration) {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+                    registration.onupdatefound = function() {
+                        const installingWorker = registration.installing;
+                        installingWorker.onstatechange = function() {
+                            if (installingWorker.state === 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    // New update available
+                                    showUpdateNotification();
+                                }
+                            }
+                        };
+                    };
                 })
                 .catch(function(error) {
                     console.log('ServiceWorker registration failed: ', error);
+                });
+            }
+
+            function showUpdateNotification() {
+                const updateDiv = document.createElement('div');
+                updateDiv.classList.add('update-notification');
+                updateDiv.innerHTML = `
+                    <p>Une nouvelle version de l'application est disponible.</p>
+                    <button class="button" id="reload">Mettre à jour</button>
+                `;
+                document.body.appendChild(updateDiv);
+
+                document.getElementById('reload').addEventListener('click', function() {
+                    window.location.reload();
                 });
             }
         </script>
