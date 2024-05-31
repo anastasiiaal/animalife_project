@@ -26,7 +26,7 @@ A user-friendly online platform, AnimaLife is designed to make life easier for b
 ## Useful commands
 ```bash
 // to start a server
-    symfony server start -d
+    symfony server:start -d
 
 // to build js + css + scss
     npm run watch
