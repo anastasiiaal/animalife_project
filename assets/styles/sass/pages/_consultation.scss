@@ -1,7 +1,23 @@
 .consultation-wrapper {
     @extend %wrapper;
+    margin-bottom: 20px;
+    p {
+        margin-bottom: 4px;
+    }
+
+    h5 {
+        margin-bottom: 15px;
+    }
     
-    &> * {
-        margin-bottom: 10px;
+    .data-wrapper {
+        p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            strong {
+                display: inline-block;
+                width: 150px;
+            }
+        }
     }
 }

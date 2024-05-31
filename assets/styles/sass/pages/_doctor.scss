@@ -83,14 +83,6 @@
         }
     }
 
-    .cols {
-        display: flex;
-        gap: 2%;
-        .wrapper {
-            width: 49%;
-        }
-    }
-
     .p-wrapper {
         display: flex;
         align-items: center;
@@ -124,17 +116,6 @@
             img {
                 height: 150px;
                 width: 150px;
-            }
-        }
-    }
-
-    @media screen and (max-width: $bp-md) {
-        .cols {
-            flex-direction: column;
-
-            .wrapper {
-                width: 100%;
-                margin-bottom: 20px;
             }
         }
     }

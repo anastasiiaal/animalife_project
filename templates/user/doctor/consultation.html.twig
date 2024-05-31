@@ -8,101 +8,101 @@
         <h4 class="mb-3">Consultation de {{ consultation.animalId.name }} ({{ consultation.animalId.typeId.typeName }}) du {{ consultation.date|date('d/m/Y') }}</h4>
         <p class="mb-10">Proprietaire : {{ consultation.animalId.ownerId.userId.firstName }} {{ consultation.animalId.ownerId.userId.lastName }}</p>
 
+<div class="cols">
+
+        <div class="wrapper consultation-wrapper">
+            <h5>Informations générales</h5>
+            <p>
+                <strong>Date de consultation :</strong> {{ consultation.date|date('d/m/Y') }}
+            </p>
+            <p>
+                <strong>Raison :</strong> <br> {{ consultation.reason }}
+            </p>
+            <p>
+                <strong>Poids :</strong> <br> {{ consultation.animalWeight }} kg
+            </p>
+            <p>
+                <strong>Prochaine visite prevu le :</strong> <br> {{ consultation.nextVisit ? consultation.nextVisit|date('Y-m-d') : "Pas planifié" }}
+            </p>
+        </div>
+        <div class="wrapper consultation-wrapper">
+            <h5>Examen clinique</h5>
+            <div class="data-wrapper">
+                <p>
+                    <strong>Yeux </strong>
+                    <input type="checkbox" disabled {{ consultation.controlEyes == 1 ? 'checked' }}>
+                    n
+                    <input type="checkbox" disabled {{ consultation.controlEyes == 0 ? 'checked' }}>
+                    ac
+                    <input type="checkbox" disabled {{ consultation.controlEyes is null ? 'checked' }}>
+                    nd
+                </p>
+                <p>
+                    <strong>Oreilles </strong>
+                    <input type="checkbox" disabled {{ consultation.controlEars == 1 ? 'checked' }}>
+                    n
+                    <input type="checkbox" disabled {{ consultation.controlEars == 0 ? 'checked' }}>
+                    ac
+                    <input type="checkbox" disabled {{ consultation.controlEars is null ? 'checked' }}>
+                    nd
+                </p>
+                <p>
+                    <strong>Peau </strong>
+                    <input type="checkbox" disabled {{ consultation.controlSkin == 1 ? 'checked' }}>
+                    n
+                    <input type="checkbox" disabled {{ consultation.controlSkin == 0 ? 'checked' }}>
+                    ac
+                    <input type="checkbox" disabled {{ consultation.controlSkin is null ? 'checked' }}>
+                    nd
+                </p>
+                <p>
+                    <strong>Digestion </strong>
+                    <input type="checkbox" disabled {{ consultation.controlDigestion == 1 ? 'checked' }}>
+                    n
+                    <input type="checkbox" disabled {{ consultation.controlDigestion == 0 ? 'checked' }}>
+                    ac
+                    <input type="checkbox" disabled {{ consultation.controlDigestion is null ? 'checked' }}>
+                    nd
+                </p>
+                <p>
+                    <strong>Cœur </strong>
+                    <input type="checkbox" disabled {{ consultation.controlHeart == 1 ? 'checked' }}>
+                    n
+                    <input type="checkbox" disabled {{ consultation.controlHeart == 0 ? 'checked' }}>
+                    ac
+                    <input type="checkbox" disabled {{ consultation.controlHeart is null ? 'checked' }}>
+                    nd
+                </p>
+                <p>
+                    <strong>Poumons </strong>
+                    <input type="checkbox" disabled {{ consultation.controlLungs == 1 ? 'checked' }}>
+                    n
+                    <input type="checkbox" disabled {{ consultation.controlLungs == 0 ? 'checked' }}>
+                    ac
+                    <input type="checkbox" disabled {{ consultation.controlLungs is null ? 'checked' }}>
+                    nd
+                </p>
+                <p>
+                    <strong>Locomoteur </strong>
+                    <input type="checkbox" disabled {{ consultation.controlMovement == 1 ? 'checked' }}>
+                    n
+                    <input type="checkbox" disabled {{ consultation.controlMovement == 0 ? 'checked' }}>
+                    ac
+                    <input type="checkbox" disabled {{ consultation.controlMovement is null ? 'checked' }}>
+                    nd
+                </p>
+
+            </div>
+            
+        </div>
+</div>
         <div class="consultation-wrapper">
+            <h5>Bilan et recommendation</h5>
+            
             <p>
-                <strong>Raison :</strong> {{ consultation.reason }}
-            </p>
-            <p>
-                <strong>Bilan et recommendations :</strong> {{ consultation.resume }}
-            </p>
-            <p>
-                <strong>Poids :</strong> {{ consultation.animalWeight }} kg
-            </p>
-            <p>
-                <strong>Prochaine visite prevu le :</strong> {{ consultation.nextVisit ? consultation.nextVisit|date('Y-m-d') : "Pas planifié" }}
+                {{ consultation.resume }}
             </p>
 
-            <h5>Examen clinique :</h5>
-            <p>
-                <strong>Oreilles : </strong>
-                {% if consultation.controlEars == 1 %}
-                    RAS
-                {% elseif consultation.controlEars == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
-            <p>
-                <strong>Yeux : </strong>
-                {% if consultation.controlEyes == 1 %}
-                    RAS
-                {% elseif consultation.controlEyes == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
-            <p>
-                <strong>Oreilles : </strong>
-                {% if consultation.controlEars == 1 %}
-                    RAS
-                {% elseif consultation.controlEars == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
-            <p>
-                <strong>Peaux : </strong>
-                {% if consultation.controlSkin == 1 %}
-                    RAS
-                {% elseif consultation.controlSkin == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
-            <p>
-                <strong>Digestion : </strong>
-                {% if consultation.controlDigestion == 1 %}
-                    RAS
-                {% elseif consultation.controlDigestion == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
-            <p>
-                <strong>Coeur : </strong>
-                {% if consultation.controlHeart == 1 %}
-                    RAS
-                {% elseif consultation.controlHeart == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
-            <p>
-                <strong>Poumons : </strong>
-                {% if consultation.controlLungs == 1 %}
-                    RAS
-                {% elseif consultation.controlLungs == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
-            <p>
-                <strong>Locomoteur : </strong>
-                {% if consultation.controlMovement == 1 %}
-                    RAS
-                {% elseif consultation.controlMovement == 0 %}
-                    A controler
-                {% else %}
-                    Pas renseigné
-                {% endif %}
-            </p>
             {% if consultation.document %}
                 Document: <a href="{{ asset('path/to/documents/' ~ consultation.document) }}">Download</a>
             {% endif %}
@@ -115,9 +115,9 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <a href="{{ path('consultation', {'id': consultation.id}) }}" class="button outline mt-3">Modifier</a>
         </div>
-        
+
+        <a href="{{ path('consultation', {'id': consultation.id}) }}" class="button outline mt-3">Modifier</a>
     </div>
 
 

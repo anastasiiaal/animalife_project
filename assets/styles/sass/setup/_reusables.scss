@@ -31,3 +31,21 @@
     background-color: $white;
 }
 
+.cols {
+    display: flex;
+    gap: 2%;
+    .wrapper {
+        width: 49%;
+    }
+}
+
+@media screen and (max-width: $bp-md) {
+    .cols {
+        flex-direction: column;
+
+        .wrapper {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}
