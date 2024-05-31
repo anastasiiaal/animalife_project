@@ -2,7 +2,7 @@
 
 A user-friendly online platform, AnimaLife is designed to make life easier for both pet owners and veterinarians. It helps save and manage the health history of pets, search for veterinarians, book urgent appointments, and much more. 
 
-![](/assets/images/screen.png)
+![](/assets/images/screen2.png)
 
 [Click here](https://animalife.ovh/) to see the prototype! (Don't be too harsh, it is still in progress ✨)
 
