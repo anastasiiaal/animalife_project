@@ -42,7 +42,7 @@
                 border-radius: $radius-lg;
                 border: 1px solid $dark-blue;
                 &:after {
-                    content: url('/assets/images/tick.svg');
+                    content: url('/public/images/tick.svg');
                     position: absolute;
                     top: 50%;
                     right: 30px;
