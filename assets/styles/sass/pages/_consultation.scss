@@ -2,7 +2,7 @@
     @extend %wrapper;
     margin-bottom: 20px;
     p {
-        margin-bottom: 4px;
+        margin-bottom: 5px;
     }
 
     h5 {
@@ -13,7 +13,7 @@
         p {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 7px;
             strong {
                 display: inline-block;
                 width: 130px;
@@ -22,6 +22,7 @@
 
         input[type=checkbox] {
             margin-top: 2px;
+            margin-left: 8px;
         }
     }
 }
